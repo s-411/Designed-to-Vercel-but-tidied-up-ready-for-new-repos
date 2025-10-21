@@ -8,6 +8,10 @@ Scope: Extend `starter-app/` so every new project launches with
 - Supabase
 - Stripe
 - Resend
+- Convertkit / Mailerlite
+      https://www.mailerlite.com/
+      https://www.brevo.com/pricing/
+      https://www.brevo.com/pricing/
 - Dark/Light theme support
 - RAG over database?
 - Revenue Cat
@@ -16,7 +20,8 @@ Scope: Extend `starter-app/` so every new project launches with
 - env variable placeholders
 - Responsive on all devices
 - Mobile Menu Struture
-- PWA capabilities//]]
+- PWA capabilities
+
 
 ## 1. Objectives
 - Bootstrap the starter app with working Supabase auth/storage and Stripe billing before any feature work begins.
