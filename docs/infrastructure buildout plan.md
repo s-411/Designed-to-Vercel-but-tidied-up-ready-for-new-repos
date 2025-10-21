@@ -11,7 +11,9 @@ Scope: Extend `starter-app/` so every new project launches with
 - User settings page
 - Smooth animations with Framer Motion https://motion.dev/
 - env variable placeholders
-
+- Responsive on all devices
+- Mobile Menu Struture
+- PWA capabilities
 
 ## 1. Objectives
 - Bootstrap the starter app with working Supabase auth/storage and Stripe billing before any feature work begins.
