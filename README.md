@@ -6,12 +6,37 @@ A comprehensive design system and demo application showcasing modern UI componen
 
 ```
 .
-├── demo-app/          # Next.js demo application (deployable)
-├── design-system/     # Design system documentation and reference
+├── design-system/     # Token source, build scripts, and publishable package (mm-design-system)
+├── demo-app/          # Full showcase application using every section of the design system
+├── starter-app/       # Minimal production shell wired to the design system (recommended starting point)
 ├── canvas-images/     # Screenshot references for demo sections
 ├── docs/              # Living system documentation
-└── archive/           # Historical plans and legacy docs (read-only)
+├── archive/           # Historical plans and legacy docs (read-only)
+└── package.json       # Monorepo workspace scripts (`tokens:build`, `lint:*`, etc.)
 ```
+
+## Getting Started
+
+Install all dependencies from the repository root (workspaces will bootstrap each package):
+
+```bash
+npm install --legacy-peer-deps
+```
+
+Regenerate design tokens and verify guardrails:
+
+```bash
+npm run tokens:build
+npm run tokens:check
+```
+
+### Starter App (token-first shell)
+
+```bash
+npm run dev:starter
+```
+
+The starter shell imports `mm-design-system` globals, spreads the generated Tailwind theme, and enforces lint rules that forbid hard-coded colors. Use this project when kicking off a new product surface.
 
 ## Demo Application
 
@@ -22,15 +47,14 @@ The demo application is located in the `demo-app/` directory and showcases a com
 - **Data Visualization**: Charts, graphs, and analytics components
 - **Interactive Elements**: Forms, modals, dialogs, and more
 
-### Local Development
+### Local Development (Demo)
 
 ```bash
-cd demo-app
-npm install
-npm run dev
+npm run lint:demo
+npm --workspace demo-app run dev
 ```
 
-The app will run on [http://localhost:3001](http://localhost:3001)
+The app runs on [http://localhost:3001](http://localhost:3001).
 
 ## Deployment
 

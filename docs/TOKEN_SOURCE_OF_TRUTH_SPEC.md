@@ -96,9 +96,9 @@ Use a nested object grouped by token category. Each token object includes:
      }
    }
    ```
-4. **Demo App Integration**:
-   - Add matching scripts in `demo-app/package.json` that call the root command via `npm --prefix ../design-system run tokens:build`.
-   - Ensure `demo-app` imports CSS from the packaged design system or local build output.
+4. **App Integration**:
+  - Use the workspace script: `npm run tokens:build` (root) or `npm run tokens:build --workspace design-system`.
+  - Ensure consuming apps import CSS from the packaged design system or local build output.
 
 ## 5. Generated Output Requirements
 - **CSS Variables**:
@@ -131,9 +131,9 @@ Use a nested object grouped by token category. Each token object includes:
 - Optional: integrate Stylelint in CSS to forbid hard-coded colors outside generated files.
 
 ## 8. Packaging for Next.js on Vercel
-- Publish `design-system` as a private npm package (e.g., `@mm/design-system`). Include generated files in the package entry points.
+- Publish `design-system` as a private npm package (e.g., `mm-design-system` or a scoped variant). Include generated files in the package entry points.
 - Next.js apps on Vercel:
-  - Import global styles in `app/layout.tsx` or `_app.tsx`: `import "@mm/design-system/styles/globals.css"`.
+  - Import global styles in `app/layout.tsx` or `_app.tsx`: `import "mm-design-system/styles/globals.css"`.
   - Ensure the tokens build step runs before `next build`; add `prebuild` script to run `tokens:build`.
   - Provide tree-shakeable exports for component libraries that rely on tokens (e.g., design-system React components).
 - Keep build scripts lightweight—no native binaries—to align with Vercel build environments.

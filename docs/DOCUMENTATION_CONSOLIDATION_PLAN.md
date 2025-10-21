@@ -30,7 +30,7 @@ Scope: Repository root + `design-system` docs
 
 ### 3.1 `docs/SYSTEM_OVERVIEW.md`
 - **Mission & Principles** (1 page)
-- **Repository Map** (tree + description of `design-system`, `demo-app`, `canvas-images`)
+- **Repository Map** (tree + description of `design-system`, `starter-app`, `demo-app`, `canvas-images`)
 - **Token Architecture** (pull canonical tables from `DESIGN_TOKENS.md`, include schema summary linked to `TOKEN_SOURCE_OF_TRUTH_SPEC.md`)
 - **Build Tooling & Commands** (link to scripts, `tokens:build`, lint/test)
 - **Theming & Modes** (dark/light toggle, theme provider usage)
@@ -80,4 +80,3 @@ archive/
 - Do we want a printable PDF or Notion export? (Optional post-consolidation)
 - Should `canvas-images` include a JSON manifest describing which demo section each screenshot maps to? (Recommended.)
 - Do we maintain separate release notes for tokens vs. components? (Consider once automation in place.)
-
