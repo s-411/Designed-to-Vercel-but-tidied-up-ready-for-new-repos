@@ -3,6 +3,10 @@
   "version": "2.0.0",
   "description": "MM Design System - Production-ready styling system with Tailwind CSS 4, shadcn/ui support, and light/dark mode",
   "private": true,
+  "scripts": {
+    "tokens:build": "tsc --project scripts/tsconfig.json && node scripts/dist/build-tokens.js",
+    "tokens:check": "tsc --project scripts/tsconfig.json && node scripts/dist/build-tokens.js --check"
+  },
   "engines": {
     "node": ">=18.0.0"
   },

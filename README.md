@@ -8,8 +8,9 @@ A comprehensive design system and demo application showcasing modern UI componen
 .
 ├── demo-app/          # Next.js demo application (deployable)
 ├── design-system/     # Design system documentation and reference
-├── Canvas/            # Design assets and resources
-└── [docs]/            # Component documentation and planning files
+├── canvas-images/     # Screenshot references for demo sections
+├── docs/              # Living system documentation
+└── archive/           # Historical plans and legacy docs (read-only)
 ```
 
 ## Demo Application
@@ -90,11 +91,11 @@ When deploying via the Vercel dashboard, make sure to set:
 
 ## Documentation
 
-See the various markdown files in the root directory for detailed documentation:
-- `DESIGN_SYSTEM_README.md` - Design system overview
-- `COLOR_SYSTEM_ARCHITECTURE.md` - Color system documentation
-- `COMPONENT_AUDIT.md` - Component audit and inventory
-- `TIER-*-PLAN.md` - Implementation plans for each tier
+Start here:
+- `docs/SYSTEM_OVERVIEW.md` – architecture, folder map, token workflow.
+- `docs/AI_IMPLEMENTATION_GUIDE.md` – enforced rules and build playbook for agents.
+- `docs/TOKEN_SOURCE_OF_TRUTH_SPEC.md` – canonical token schema and automation details.
+Legacy documentation and planning notes now live under `archive/` for reference.
 
 ## License
 

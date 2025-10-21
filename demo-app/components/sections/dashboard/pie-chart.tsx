@@ -62,7 +62,7 @@ export function PieChart({
               label={renderLabel}
               outerRadius={variant === 'donut' ? 120 : 140}
               innerRadius={variant === 'donut' ? 80 : 0}
-              fill="#8884d8"
+              fill={data[0]?.color || defaultColors[0]}
               dataKey="value"
             >
               {data.map((entry, index) => (

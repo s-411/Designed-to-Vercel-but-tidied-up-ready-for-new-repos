@@ -34,6 +34,29 @@ export interface AppearanceSettingsProps {
   isSaving?: boolean
 }
 
+const defaultColorSchemes: ColorScheme[] = [
+  {
+    id: 'ocean',
+    name: 'Ocean Blue',
+    colors: ['hsl(var(--primary))', 'hsl(var(--chart-2))', 'hsl(var(--chart-3))'],
+  },
+  {
+    id: 'sunset',
+    name: 'Sunset Glow',
+    colors: ['hsl(var(--chart-4))', 'hsl(var(--chart-1))', 'hsl(var(--chart-5))'],
+  },
+  {
+    id: 'forest',
+    name: 'Forest Canopy',
+    colors: ['hsl(var(--chart-3))', 'hsl(var(--chart-2))', 'hsl(var(--chart-1))'],
+  },
+  {
+    id: 'midnight',
+    name: 'Midnight Violet',
+    colors: ['hsl(var(--chart-5))', 'hsl(var(--chart-1))', 'hsl(var(--chart-2))'],
+  },
+]
+
 /**
  * AppearanceSettings - Theme and appearance customization
  *
@@ -49,12 +72,7 @@ export interface AppearanceSettingsProps {
 export function AppearanceSettings({
   preferences,
   onSave,
-  availableColorSchemes = [
-    { id: 'ocean', name: 'Ocean Blue', colors: ['#337def', '#2563eb', '#1e40af'] },
-    { id: 'sunset', name: 'Sunset Orange', colors: ['#f97316', '#ea580c', '#c2410c'] },
-    { id: 'forest', name: 'Forest Green', colors: ['#22c55e', '#16a34a', '#15803d'] },
-    { id: 'purple', name: 'Royal Purple', colors: ['#a855f7', '#9333ea', '#7e22ce'] },
-  ],
+  availableColorSchemes = defaultColorSchemes,
   isSaving = false,
 }: AppearanceSettingsProps) {
   const [formData, setFormData] = React.useState<AppearancePreferences>(preferences)

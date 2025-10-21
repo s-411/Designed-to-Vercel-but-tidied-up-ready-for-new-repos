@@ -16,6 +16,15 @@ import {
 } from '@/components/sections'
 
 export default function DashboardPage() {
+  const chartPalette = [
+    'hsl(var(--chart-1))',
+    'hsl(var(--chart-2))',
+    'hsl(var(--chart-3))',
+    'hsl(var(--chart-4))',
+    'hsl(var(--chart-5))',
+  ]
+  const chartColor = (index: number) => chartPalette[index % chartPalette.length]
+
   const lineChartData = [
     {
       name: 'Revenue',
@@ -27,21 +36,21 @@ export default function DashboardPage() {
         { date: 'May', value: 6000 },
         { date: 'Jun', value: 5500 },
       ],
-      color: '#8b5cf6',
+      color: chartColor(0),
     },
   ]
 
   const barChartData = [
-    { label: 'Product A', value: 400, color: '#8b5cf6' },
-    { label: 'Product B', value: 300, color: '#3b82f6' },
-    { label: 'Product C', value: 600, color: '#10b981' },
-    { label: 'Product D', value: 200, color: '#f59e0b' },
+    { label: 'Product A', value: 400, color: chartColor(0) },
+    { label: 'Product B', value: 300, color: chartColor(1) },
+    { label: 'Product C', value: 600, color: chartColor(2) },
+    { label: 'Product D', value: 200, color: chartColor(3) },
   ]
 
   const pieChartData = [
-    { name: 'Desktop', value: 400, color: '#8b5cf6' },
-    { name: 'Mobile', value: 300, color: '#3b82f6' },
-    { name: 'Tablet', value: 200, color: '#10b981' },
+    { name: 'Desktop', value: 400, color: chartColor(0) },
+    { name: 'Mobile', value: 300, color: chartColor(1) },
+    { name: 'Tablet', value: 200, color: chartColor(2) },
   ]
 
   const stats = [
@@ -52,8 +61,8 @@ export default function DashboardPage() {
   ]
 
   const goals = [
-    { id: '1', name: 'Q4 Revenue Target', current: 450000, target: 500000, unit: 'USD', deadline: '2024-12-31', color: '#8b5cf6' },
-    { id: '2', name: 'New User Acquisition', current: 8500, target: 10000, unit: 'users', deadline: '2024-11-30', color: '#3b82f6' },
+    { id: '1', name: 'Q4 Revenue Target', current: 450000, target: 500000, unit: 'USD', deadline: '2024-12-31', color: chartColor(0) },
+    { id: '2', name: 'New User Acquisition', current: 8500, target: 10000, unit: 'users', deadline: '2024-11-30', color: chartColor(1) },
   ]
 
   const activities = [

@@ -33,11 +33,11 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
   ) => {
     const clampedValue = Math.min(Math.max(value, 0), 100)
 
-    const colorMap = {
-      primary: 'var(--color-mm-primary)',
-      success: '#51cf66',
-      warning: '#fcc729',
-      error: '#ef4444',
+    const colorMap: Record<Required<ProgressProps>["color"], string> = {
+      primary: 'hsl(var(--primary))',
+      success: 'hsl(var(--chart-2))',
+      warning: 'hsl(var(--chart-4))',
+      error: 'hsl(var(--destructive))',
     }
 
     if (variant === 'circular') {
