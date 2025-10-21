@@ -3,17 +3,20 @@
 Status: Draft (2024-11-20)  
 Scope: Extend `starter-app/` so every new project launches with 
 
+(Use the bestsaaskit template for inso and layout)
+
 - Supabase
 - Stripe
 - Resend
 - Dark/Light theme support
+- RAG over database?
 - Revenue Cat
 - User settings page
 - Smooth animations with Framer Motion https://motion.dev/
 - env variable placeholders
 - Responsive on all devices
 - Mobile Menu Struture
-- PWA capabilities
+- PWA capabilities//]]
 
 ## 1. Objectives
 - Bootstrap the starter app with working Supabase auth/storage and Stripe billing before any feature work begins.
