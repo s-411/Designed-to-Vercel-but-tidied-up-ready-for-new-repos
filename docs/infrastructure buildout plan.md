@@ -1,7 +1,17 @@
 # Infrastructure Buildout Plan
 
 Status: Draft (2024-11-20)  
-Scope: Extend `starter-app/` so every new project launches with Supabase, Stripe, and environment automation in place.
+Scope: Extend `starter-app/` so every new project launches with 
+
+- Supabase
+- Stripe
+- Resend
+- Dark/Light theme support
+- Revenue Cat
+- User settings page
+- Smooth animations with Framer Motion https://motion.dev/
+- env variable placeholders
+
 
 ## 1. Objectives
 - Bootstrap the starter app with working Supabase auth/storage and Stripe billing before any feature work begins.
