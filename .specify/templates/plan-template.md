@@ -31,7 +31,11 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+**Token-First Development**: All styling MUST use tokens from `design-tokens.json` - no hard-coded values
+**Guardrail Enforcement**: `npm run tokens:check` and lint rules MUST pass
+**Workspace Orchestration**: Changes MUST go through `mm-design-system` package interface
+**Visual Fidelity**: Components MUST match demo sections and canvas screenshots
+**Library-First Architecture**: Features MUST be built as reusable library components first
 
 ## Project Structure
 

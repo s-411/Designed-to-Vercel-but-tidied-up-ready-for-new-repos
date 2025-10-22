@@ -1,50 +1,62 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+Version change: [NEW] → 1.0.0
+Modified principles: N/A (initial constitution)
+Added sections:
+  - Core Principles (5 principles: Token-First, Guardrail Enforcement, Workspace Orchestration, Visual Fidelity, Library-First)
+  - Deployment Standards
+  - Quality Gates
+  - Governance
+Removed sections: N/A
+Templates requiring updates:
+  ✅ plan-template.md - Updated Constitution Check section with specific principles
+  ✅ spec-template.md - Reviewed, no updates needed (user-focused)
+  ✅ tasks-template.md - Added constitution compliance tasks to Polish phase
+  ✅ All other templates reviewed and aligned
+Follow-up TODOs: None - all placeholders filled with concrete values
+-->
+
+# MM Design System Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Token-First Development (NON-NEGOTIABLE)
+All styling MUST originate from design tokens in `design-system/config/design-tokens.json`. Hard-coded colors, typography, spacing, or shadows are forbidden. Every visual property MUST reference tokens via `hsl(var(--token))`, `var(--color-mm-*)`, or Tailwind utilities backed by tokens. The build pipeline via `npm run tokens:build` is the single source of truth for all styling artifacts.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+**Rationale**: Ensures visual consistency, enables systematic design changes, and prevents styling drift across the monorepo ecosystem.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### II. Guardrail Enforcement
+The lint rules that forbid hard-coded colors (`npm run lint:demo`, `npm run lint:starter`) are inviolable. Violations MUST be fixed, never suppressed. The `npm run tokens:check` command MUST pass before any PR can be merged. Generated artifacts MUST never be manually edited.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+**Rationale**: Automated enforcement prevents regression and maintains token discipline without relying on manual review processes.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### III. Workspace Orchestration
+The monorepo structure (`design-system/`, `demo-app/`, `starter-app/`) MUST be preserved. The design system package is the single dependency for all consuming applications. Workspace scripts at the root (`tokens:build`, `lint:*`, `dev:starter`) provide unified operations. Cross-package imports MUST go through the published `mm-design-system` package interface.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+**Rationale**: Clear separation of concerns between token generation, demonstration, and consumption while maintaining development workflow efficiency.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### IV. Visual Fidelity Contract
+The demo application serves as the authoritative reference for component behavior, spacing, and visual design. Canvas screenshots in `canvas-images/` provide visual regression anchors. New components MUST achieve pixel-perfect alignment with demo sections. Theme mode switching (light/dark) MUST work consistently across all components.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+**Rationale**: Maintains design quality and provides clear success criteria for component implementation accuracy.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### V. Library-First Architecture
+Components MUST be built as reusable library elements before being consumed in applications. The `mm-design-system` package provides the interface boundary. Components MUST be independently testable and documented. Application-specific customizations MUST extend, not modify, the core library components.
+
+**Rationale**: Promotes reusability, testability, and clear architectural boundaries while preventing component proliferation and maintenance overhead.
+
+## Deployment Standards
+
+The demo application MUST deploy to Vercel with root directory set to `demo-app`. Framework detection MUST identify Next.js automatically. Build commands MUST execute token generation before Next.js compilation. Environment configuration MUST support both development workflows and production deployment without manual intervention.
+
+## Quality Gates
+
+Code review MUST verify token compliance using automated lint rules. Visual regression testing MUST validate demo section accuracy against canvas references. Component implementations MUST pass accessibility audits (ARIA labels, keyboard navigation). Performance benchmarks MUST maintain responsive behavior across mobile and desktop viewports.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other development practices within the MM Design System ecosystem. Amendments require documentation of the rationale, approval via pull request review, and coordinated migration of affected templates and workflows. All development activities MUST verify compliance with these principles before completion.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+Complexity that violates these principles MUST be explicitly justified with business necessity and documented alternatives that were considered and rejected. When constitutional conflicts arise, token-first development (Principle I) takes precedence over all other considerations.
+
+**Version**: 1.0.0 | **Ratified**: 2025-10-22 | **Last Amended**: 2025-10-22

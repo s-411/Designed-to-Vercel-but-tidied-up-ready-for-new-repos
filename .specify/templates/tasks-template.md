@@ -150,6 +150,9 @@ Examples of foundational tasks (adjust based on your project):
 
 **Purpose**: Improvements that affect multiple user stories
 
+- [ ] TXXX [P] Constitution compliance verification (token-first, guardrails, library-first)
+- [ ] TXXX [P] Run `npm run tokens:check` and fix any violations
+- [ ] TXXX [P] Run `npm run lint:demo` and `npm run lint:starter` - fix all hard-coded color violations
 - [ ] TXXX [P] Documentation updates in docs/
 - [ ] TXXX Code cleanup and refactoring
 - [ ] TXXX Performance optimization across all stories
