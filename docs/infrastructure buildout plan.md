@@ -9,13 +9,13 @@ Scope: Extend `starter-app/` so every new project launches with
 - Auth = Supabase
 - Stripe
 - Resend
-- Convertkit / Mailerlite
+- Email Sender API Integration
+      https://kit.com/
       https://www.mailerlite.com/
-      https://www.brevo.com/pricing/
-      Sender email saas. Grab URL
+      https://www.brevo.com/
+      https://www.sender.net/
 - Dark/Light theme support
-- RAG over database?
-- Revenue Cat
+- RAG over database
 - User settings page
 - Smooth animations with Framer Motion https://motion.dev/
 - env variable placeholders
