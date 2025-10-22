@@ -6,12 +6,13 @@ Scope: Extend `starter-app/` so every new project launches with
 (Use the bestsaaskit template for inso and layout)
 
 - Supabase
+- Auth = Supabase
 - Stripe
 - Resend
 - Convertkit / Mailerlite
       https://www.mailerlite.com/
       https://www.brevo.com/pricing/
-      https://www.brevo.com/pricing/
+      Sender email saas. Grab URL
 - Dark/Light theme support
 - RAG over database?
 - Revenue Cat
