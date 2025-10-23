@@ -26,13 +26,13 @@ export default function Home() {
               <Link
                 href="/signup"
                 data-testid="cta-button"
-                className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                className="btn-mm"
               >
                 Get Started
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 rounded-lg border border-border px-8 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                className="btn-secondary"
               >
                 View Pricing
               </Link>
@@ -116,7 +116,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                className="btn-mm"
               >
                 Start Building
               </Link>
@@ -124,7 +124,7 @@ export default function Home() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-border px-8 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                className="btn-secondary"
               >
                 View on GitHub
               </a>
