@@ -60,11 +60,11 @@ export function StatusDashboard() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'healthy':
-        return 'text-green-600 dark:text-green-400'
+        return 'text-emerald-600 dark:text-emerald-400'
       case 'unhealthy':
-        return 'text-red-600 dark:text-red-400'
+        return 'text-destructive'
       case 'disabled':
-        return 'text-gray-500 dark:text-gray-400'
+        return 'text-muted-foreground'
       default:
         return 'text-muted-foreground'
     }
@@ -86,11 +86,11 @@ export function StatusDashboard() {
   const getStatusBg = (status: string) => {
     switch (status) {
       case 'healthy':
-        return 'bg-green-100 dark:bg-green-900/20'
+        return 'bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-900'
       case 'unhealthy':
-        return 'bg-red-100 dark:bg-red-900/20'
+        return 'bg-destructive/10 border-destructive/20'
       case 'disabled':
-        return 'bg-gray-100 dark:bg-gray-800/20'
+        return 'bg-muted/50 border-muted'
       default:
         return 'bg-muted'
     }
@@ -102,8 +102,8 @@ export function StatusDashboard() {
       <div
         className={`rounded-lg border p-4 text-center ${
           healthData.status === 'healthy'
-            ? 'border-green-500 bg-green-50 dark:bg-green-900/10'
-            : 'border-red-500 bg-red-50 dark:bg-red-900/10'
+            ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/30'
+            : 'border-destructive bg-destructive/10'
         }`}
       >
         <div className="flex items-center justify-center gap-2">
@@ -113,8 +113,8 @@ export function StatusDashboard() {
           <span
             className={`text-lg font-semibold ${
               healthData.status === 'healthy'
-                ? 'text-green-700 dark:text-green-300'
-                : 'text-red-700 dark:text-red-300'
+                ? 'text-emerald-700 dark:text-emerald-300'
+                : 'text-destructive'
             }`}
           >
             System {healthData.status === 'healthy' ? 'Healthy' : 'Unhealthy'}
@@ -157,15 +157,15 @@ export function StatusDashboard() {
       {/* Legend */}
       <div className="flex flex-wrap items-center justify-center gap-4 rounded-lg border border-border bg-muted/30 p-3 text-xs">
         <div className="flex items-center gap-1">
-          <span className="text-green-600 dark:text-green-400">✓</span>
+          <span className="text-emerald-600 dark:text-emerald-400">✓</span>
           <span className="text-muted-foreground">Healthy</span>
         </div>
         <div className="flex items-center gap-1">
-          <span className="text-red-600 dark:text-red-400">✗</span>
+          <span className="text-destructive">✗</span>
           <span className="text-muted-foreground">Unhealthy</span>
         </div>
         <div className="flex items-center gap-1">
-          <span className="text-gray-500 dark:text-gray-400">○</span>
+          <span className="text-muted-foreground">○</span>
           <span className="text-muted-foreground">Disabled</span>
         </div>
       </div>
