@@ -123,9 +123,7 @@ export default function ProfilePage() {
                   disabled
                   className="mt-1 block w-full rounded-lg border border-border bg-muted px-3 py-2 text-sm opacity-50"
                 />
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Email cannot be changed
-                </p>
+                <p className="mt-1 text-xs text-muted-foreground">Email cannot be changed</p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">

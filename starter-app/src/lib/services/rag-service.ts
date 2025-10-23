@@ -4,7 +4,12 @@
  */
 
 import { getOpenAIClient, OPENAI_MODELS, OPENAI_CONFIG } from '@/lib/openai'
-import { searchDocuments, formatSearchContext, extractSourceMetadata, type SearchResult } from './search-service'
+import {
+  searchDocuments,
+  formatSearchContext,
+  extractSourceMetadata,
+  type SearchResult,
+} from './search-service'
 import { retryWithBackoff } from '@/lib/errors'
 
 export interface RAGOptions {
@@ -184,9 +189,7 @@ export async function evaluateQuery(
   const canAnswer = topSimilarity > 0.7 && searchResults.length > 0
 
   // Extract unique document IDs
-  const suggestedDocuments = Array.from(
-    new Set(searchResults.map(r => r.documentId))
-  )
+  const suggestedDocuments = Array.from(new Set(searchResults.map(r => r.documentId)))
 
   return {
     canAnswer,

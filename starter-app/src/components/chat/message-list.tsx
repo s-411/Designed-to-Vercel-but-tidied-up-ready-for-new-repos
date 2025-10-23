@@ -43,9 +43,7 @@ export function MessageList({ messages, streaming, className }: MessageListProps
               />
             </svg>
           </div>
-          <p className="text-sm font-medium text-muted-foreground">
-            No messages yet
-          </p>
+          <p className="text-sm font-medium text-muted-foreground">No messages yet</p>
           <p className="mt-1 text-xs text-muted-foreground">
             Start a conversation by asking a question
           </p>
@@ -59,10 +57,7 @@ export function MessageList({ messages, streaming, className }: MessageListProps
       {messages.map((message, index) => (
         <div
           key={message.id || index}
-          className={cn(
-            'flex gap-3',
-            message.role === 'user' ? 'justify-end' : 'justify-start'
-          )}
+          className={cn('flex gap-3', message.role === 'user' ? 'justify-end' : 'justify-start')}
         >
           {message.role === 'assistant' && (
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10">

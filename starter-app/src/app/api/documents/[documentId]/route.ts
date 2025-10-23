@@ -65,10 +65,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     })
   } catch (error) {
     console.error('Document fetch error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -106,9 +103,7 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
     // Delete from storage if path exists
     if (document.storage_path) {
       try {
-        await supabase.storage
-          .from('documents')
-          .remove([document.storage_path])
+        await supabase.storage.from('documents').remove([document.storage_path])
       } catch (storageError) {
         console.warn('Storage deletion warning:', storageError)
         // Continue with database deletion even if storage fails
@@ -124,19 +119,13 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
 
     if (deleteError) {
       console.error('Error deleting document:', deleteError)
-      return NextResponse.json(
-        { error: 'Failed to delete document' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Failed to delete document' }, { status: 500 })
     }
 
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Document deletion error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -169,10 +158,7 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
     if (metadata !== undefined) updates.metadata = metadata
 
     if (Object.keys(updates).length === 0) {
-      return NextResponse.json(
-        { error: 'No valid fields to update' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'No valid fields to update' }, { status: 400 })
     }
 
     // Update document
@@ -185,18 +171,12 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
       .single()
 
     if (updateError || !document) {
-      return NextResponse.json(
-        { error: 'Failed to update document' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Failed to update document' }, { status: 500 })
     }
 
     return NextResponse.json({ document })
   } catch (error) {
     console.error('Document update error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

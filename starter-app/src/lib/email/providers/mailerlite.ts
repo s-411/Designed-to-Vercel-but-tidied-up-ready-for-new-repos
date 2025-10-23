@@ -1,5 +1,10 @@
 import { env } from '@/lib/env'
-import type { EmailProvider, AddSubscriberOptions, SendEmailOptions, SubscriberInfo } from '../provider-interface'
+import type {
+  EmailProvider,
+  AddSubscriberOptions,
+  SendEmailOptions,
+  SubscriberInfo,
+} from '../provider-interface'
 import { EmailProviderError } from '../provider-interface'
 
 export class MailerLiteProvider implements EmailProvider {
@@ -25,7 +30,10 @@ export class MailerLiteProvider implements EmailProvider {
       if (!response.ok) throw new Error(data.message || 'Failed to add subscriber')
       return data.data.id
     } catch (error) {
-      throw new EmailProviderError(error instanceof Error ? error.message : 'Failed to add subscriber', 'mailerlite')
+      throw new EmailProviderError(
+        error instanceof Error ? error.message : 'Failed to add subscriber',
+        'mailerlite'
+      )
     }
   }
 
@@ -38,7 +46,10 @@ export class MailerLiteProvider implements EmailProvider {
   }
 
   async sendEmail(options: SendEmailOptions): Promise<void> {
-    throw new EmailProviderError('MailerLite is for marketing only. Use Resend for transactional emails.', 'mailerlite')
+    throw new EmailProviderError(
+      'MailerLite is for marketing only. Use Resend for transactional emails.',
+      'mailerlite'
+    )
   }
 
   async getSubscriber(email: string): Promise<SubscriberInfo | null> {

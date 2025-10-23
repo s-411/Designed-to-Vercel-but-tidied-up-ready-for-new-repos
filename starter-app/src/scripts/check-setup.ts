@@ -67,11 +67,7 @@ function checkSetup(): ValidationResult[] {
       },
       {
         name: 'NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY',
-        status: env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-          ? 'pass'
-          : paymentsEnabled
-            ? 'fail'
-            : 'warn',
+        status: env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ? 'pass' : paymentsEnabled ? 'fail' : 'warn',
         message: env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
           ? 'Set'
           : paymentsEnabled
@@ -110,11 +106,7 @@ function checkSetup(): ValidationResult[] {
       {
         name: 'OPENAI_API_KEY',
         status: env.OPENAI_API_KEY ? 'pass' : ragEnabled ? 'fail' : 'warn',
-        message: env.OPENAI_API_KEY
-          ? 'Set'
-          : ragEnabled
-            ? 'Required when RAG enabled'
-            : 'Not set',
+        message: env.OPENAI_API_KEY ? 'Set' : ragEnabled ? 'Required when RAG enabled' : 'Not set',
       },
       {
         name: 'OPENAI_EMBEDDING_MODEL',
@@ -191,7 +183,7 @@ function checkSetup(): ValidationResult[] {
 
 function printResults(results: ValidationResult[]) {
   console.log('\n🔍 Starter App Setup Validation\n')
-  console.log('=' .repeat(80))
+  console.log('='.repeat(80))
 
   let hasErrors = false
   let hasWarnings = false

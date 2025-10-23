@@ -165,11 +165,7 @@ export function DocumentUpload({
                   />
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  {progress < 30
-                    ? 'Uploading...'
-                    : progress < 100
-                      ? 'Processing...'
-                      : 'Complete!'}
+                  {progress < 30 ? 'Uploading...' : progress < 100 ? 'Processing...' : 'Complete!'}
                 </p>
               </div>
             )}
@@ -180,10 +176,7 @@ export function DocumentUpload({
         {selectedFile && !isUploading && (
           <div className="mt-4 space-y-3">
             <div>
-              <label
-                htmlFor="title"
-                className="block text-sm font-medium text-foreground"
-              >
+              <label htmlFor="title" className="block text-sm font-medium text-foreground">
                 Document Title (optional)
               </label>
               <input

@@ -56,10 +56,7 @@ export async function POST(request: NextRequest) {
 
     if (createError) {
       console.error('Error creating document:', createError)
-      return NextResponse.json(
-        { error: 'Failed to create document' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Failed to create document' }, { status: 500 })
     }
 
     // Queue document processing (in a real app, use a job queue)
@@ -89,10 +86,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -136,10 +130,7 @@ export async function GET(request: NextRequest) {
 
     if (fetchError) {
       console.error('Error fetching documents:', fetchError)
-      return NextResponse.json(
-        { error: 'Failed to fetch documents' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Failed to fetch documents' }, { status: 500 })
     }
 
     return NextResponse.json({
@@ -152,9 +143,6 @@ export async function GET(request: NextRequest) {
     })
   } catch (error) {
     console.error('Document list error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

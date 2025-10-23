@@ -26,10 +26,7 @@ export async function processDocument(
 
   try {
     // Update status to processing
-    await supabase
-      .from('documents')
-      .update({ status: 'processing' })
-      .eq('id', documentId)
+    await supabase.from('documents').update({ status: 'processing' }).eq('id', documentId)
 
     // Get document to get user_id
     const { data: document, error: fetchError } = await supabase
@@ -61,9 +58,7 @@ export async function processDocument(
     const chunkTexts = chunks.map(c => c.content)
     const embeddingResult = await generateEmbeddingsBatch(chunkTexts)
 
-    console.log(
-      `[${documentId}] Generated ${embeddingResult.embeddings.length} embeddings`
-    )
+    console.log(`[${documentId}] Generated ${embeddingResult.embeddings.length} embeddings`)
 
     // Step 3: Store chunks with embeddings in database
     console.log(`[${documentId}] Storing chunks in database...`)
@@ -85,9 +80,7 @@ export async function processDocument(
     for (let i = 0; i < chunkRecords.length; i += batchSize) {
       const batch = chunkRecords.slice(i, i + batchSize)
 
-      const { error: insertError } = await supabase
-        .from('document_chunks')
-        .insert(batch)
+      const { error: insertError } = await supabase.from('document_chunks').insert(batch)
 
       if (insertError) {
         console.error(`[${documentId}] Batch insert error:`, insertError)
@@ -180,9 +173,7 @@ export async function reprocessDocument(documentId: string): Promise<ProcessDocu
 /**
  * Get processing status
  */
-export async function getProcessingStatus(
-  documentId: string
-): Promise<{
+export async function getProcessingStatus(documentId: string): Promise<{
   status: string
   chunkCount: number
   totalTokens: number

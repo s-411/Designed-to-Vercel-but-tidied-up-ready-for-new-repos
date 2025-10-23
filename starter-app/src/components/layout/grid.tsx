@@ -19,7 +19,12 @@ export interface GridProps {
   gap?: number
 }
 
-export function Grid({ children, className, cols = { default: 1, md: 2, lg: 3 }, gap = 6 }: GridProps) {
+export function Grid({
+  children,
+  className,
+  cols = { default: 1, md: 2, lg: 3 },
+  gap = 6,
+}: GridProps) {
   const gridColsClasses = [
     cols.default && `grid-cols-${cols.default}`,
     cols.sm && `sm:grid-cols-${cols.sm}`,
@@ -28,9 +33,5 @@ export function Grid({ children, className, cols = { default: 1, md: 2, lg: 3 },
     cols.xl && `xl:grid-cols-${cols.xl}`,
   ].filter(Boolean)
 
-  return (
-    <div className={cn('grid', `gap-${gap}`, ...gridColsClasses, className)}>
-      {children}
-    </div>
-  )
+  return <div className={cn('grid', `gap-${gap}`, ...gridColsClasses, className)}>{children}</div>
 }

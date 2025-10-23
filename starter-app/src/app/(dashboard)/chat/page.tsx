@@ -83,12 +83,7 @@ export default function ChatPage() {
                 href="/documents"
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
               >
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -113,12 +108,7 @@ export default function ChatPage() {
               className="rounded-lg p-2 hover:bg-accent"
               aria-label="Toggle sidebar"
             >
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -175,9 +165,7 @@ export default function ChatPage() {
                   />
                 </svg>
               </div>
-              <h2 className="text-lg font-semibold text-foreground">
-                Welcome to RAG Chat
-              </h2>
+              <h2 className="text-lg font-semibold text-foreground">Welcome to RAG Chat</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Ask questions about your uploaded documents
               </p>

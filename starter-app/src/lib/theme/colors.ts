@@ -91,7 +91,11 @@ export function getThemeColorHex(colorName: keyof ThemeColors): string {
 /**
  * Get theme color as RGB object
  */
-export function getThemeColorRgb(colorName: keyof ThemeColors): { r: number; g: number; b: number } {
+export function getThemeColorRgb(colorName: keyof ThemeColors): {
+  r: number
+  g: number
+  b: number
+} {
   const hsl = getThemeColor(colorName)
   return hsl ? hslToRgb(hsl) : { r: 0, g: 0, b: 0 }
 }

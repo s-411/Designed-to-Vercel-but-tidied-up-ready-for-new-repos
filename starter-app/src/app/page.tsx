@@ -16,9 +16,7 @@ export default function Home() {
             <span className="inline-flex items-center justify-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-sm font-semibold text-primary">
               Production-Ready Starter Template
             </span>
-            <h1 className="text-balance text-4xl font-heading md:text-6xl">
-              Starter App Template
-            </h1>
+            <h1 className="text-balance text-4xl font-heading md:text-6xl">Starter App Template</h1>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               Launch your Next.js SaaS in under 15 minutes with pre-configured authentication,
               payments, email, and AI-powered Q&A. Built with TypeScript, Supabase, Stripe, and

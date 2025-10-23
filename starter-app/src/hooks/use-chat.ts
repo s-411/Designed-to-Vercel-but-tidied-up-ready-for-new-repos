@@ -71,32 +71,35 @@ export function useChat(initialSessionId?: string): UseChatReturn {
   }, [])
 
   // Load session messages
-  const loadSession = useCallback(async (sessionId: string) => {
-    try {
-      setLoading(true)
-      setError(null)
+  const loadSession = useCallback(
+    async (sessionId: string) => {
+      try {
+        setLoading(true)
+        setError(null)
 
-      const response = await fetch(`/api/chat/sessions/${sessionId}/messages`)
-      const data = await response.json()
+        const response = await fetch(`/api/chat/sessions/${sessionId}/messages`)
+        const data = await response.json()
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to load messages')
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to load messages')
+        }
+
+        setMessages(data.messages || [])
+
+        // Find and set current session
+        const session = sessions.find(s => s.id === sessionId)
+        if (session) {
+          setCurrentSession(session)
+        }
+      } catch (err) {
+        console.error('Error loading session:', err)
+        setError(err instanceof Error ? err.message : 'Failed to load messages')
+      } finally {
+        setLoading(false)
       }
-
-      setMessages(data.messages || [])
-
-      // Find and set current session
-      const session = sessions.find(s => s.id === sessionId)
-      if (session) {
-        setCurrentSession(session)
-      }
-    } catch (err) {
-      console.error('Error loading session:', err)
-      setError(err instanceof Error ? err.message : 'Failed to load messages')
-    } finally {
-      setLoading(false)
-    }
-  }, [sessions])
+    },
+    [sessions]
+  )
 
   // Create new session
   const createSession = useCallback(async (): Promise<string> => {
@@ -128,124 +131,124 @@ export function useChat(initialSessionId?: string): UseChatReturn {
   }, [fetchSessions])
 
   // Send message with streaming
-  const sendMessage = useCallback(async (message: string) => {
-    if (!currentSession) {
-      throw new Error('No active session')
-    }
-
-    try {
-      setStreaming(true)
-      setError(null)
-
-      // Add user message immediately
-      const userMessage: ChatMessage = {
-        id: `temp-${Date.now()}`,
-        sessionId: currentSession.id,
-        role: 'user',
-        content: message,
-        createdAt: new Date().toISOString(),
+  const sendMessage = useCallback(
+    async (message: string) => {
+      if (!currentSession) {
+        throw new Error('No active session')
       }
 
-      setMessages(prev => [...prev, userMessage])
+      try {
+        setStreaming(true)
+        setError(null)
 
-      // Create assistant message placeholder
-      const assistantMessage: ChatMessage = {
-        id: `temp-assistant-${Date.now()}`,
-        sessionId: currentSession.id,
-        role: 'assistant',
-        content: '',
-        createdAt: new Date().toISOString(),
-      }
+        // Add user message immediately
+        const userMessage: ChatMessage = {
+          id: `temp-${Date.now()}`,
+          sessionId: currentSession.id,
+          role: 'user',
+          content: message,
+          createdAt: new Date().toISOString(),
+        }
 
-      setMessages(prev => [...prev, assistantMessage])
+        setMessages(prev => [...prev, userMessage])
 
-      // Setup streaming
-      abortControllerRef.current = new AbortController()
+        // Create assistant message placeholder
+        const assistantMessage: ChatMessage = {
+          id: `temp-assistant-${Date.now()}`,
+          sessionId: currentSession.id,
+          role: 'assistant',
+          content: '',
+          createdAt: new Date().toISOString(),
+        }
 
-      const response = await fetch(
-        `/api/chat/sessions/${currentSession.id}/messages`,
-        {
+        setMessages(prev => [...prev, assistantMessage])
+
+        // Setup streaming
+        abortControllerRef.current = new AbortController()
+
+        const response = await fetch(`/api/chat/sessions/${currentSession.id}/messages`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ message }),
           signal: abortControllerRef.current.signal,
+        })
+
+        if (!response.ok) {
+          throw new Error('Failed to send message')
         }
-      )
 
-      if (!response.ok) {
-        throw new Error('Failed to send message')
-      }
+        const reader = response.body?.getReader()
+        const decoder = new TextDecoder()
 
-      const reader = response.body?.getReader()
-      const decoder = new TextDecoder()
+        if (!reader) {
+          throw new Error('No response body')
+        }
 
-      if (!reader) {
-        throw new Error('No response body')
-      }
+        let buffer = ''
 
-      let buffer = ''
+        while (true) {
+          const { done, value } = await reader.read()
 
-      while (true) {
-        const { done, value } = await reader.read()
+          if (done) break
 
-        if (done) break
+          buffer += decoder.decode(value, { stream: true })
 
-        buffer += decoder.decode(value, { stream: true })
+          // Process complete SSE messages
+          const lines = buffer.split('\n')
+          buffer = lines.pop() || ''
 
-        // Process complete SSE messages
-        const lines = buffer.split('\n')
-        buffer = lines.pop() || ''
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const data = JSON.parse(line.slice(6))
 
-        for (const line of lines) {
-          if (line.startsWith('data: ')) {
-            const data = JSON.parse(line.slice(6))
-
-            if (data.type === 'chunk') {
-              // Append chunk to assistant message
-              setMessages(prev => {
-                const updated = [...prev]
-                const lastMsg = updated[updated.length - 1]
-                if (lastMsg.role === 'assistant') {
-                  lastMsg.content += data.content
-                }
-                return updated
-              })
-            } else if (data.type === 'done') {
-              // Update with sources
-              setMessages(prev => {
-                const updated = [...prev]
-                const lastMsg = updated[updated.length - 1]
-                if (lastMsg.role === 'assistant') {
-                  lastMsg.sources = data.sources
-                }
-                return updated
-              })
-            } else if (data.type === 'error') {
-              throw new Error(data.error)
+              if (data.type === 'chunk') {
+                // Append chunk to assistant message
+                setMessages(prev => {
+                  const updated = [...prev]
+                  const lastMsg = updated[updated.length - 1]
+                  if (lastMsg.role === 'assistant') {
+                    lastMsg.content += data.content
+                  }
+                  return updated
+                })
+              } else if (data.type === 'done') {
+                // Update with sources
+                setMessages(prev => {
+                  const updated = [...prev]
+                  const lastMsg = updated[updated.length - 1]
+                  if (lastMsg.role === 'assistant') {
+                    lastMsg.sources = data.sources
+                  }
+                  return updated
+                })
+              } else if (data.type === 'error') {
+                throw new Error(data.error)
+              }
             }
           }
         }
-      }
 
-      // Refresh sessions to update last message time
-      await fetchSessions()
-    } catch (err) {
-      if (err instanceof Error && err.name === 'AbortError') {
-        console.log('Message cancelled')
-      } else {
-        console.error('Error sending message:', err)
-        setError(err instanceof Error ? err.message : 'Failed to send message')
+        // Refresh sessions to update last message time
+        await fetchSessions()
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          console.log('Message cancelled')
+        } else {
+          console.error('Error sending message:', err)
+          setError(err instanceof Error ? err.message : 'Failed to send message')
 
-        // Remove failed assistant message
-        setMessages(prev => prev.slice(0, -1))
+          // Remove failed assistant message
+          setMessages(prev => prev.slice(0, -1))
+        }
+      } finally {
+        setStreaming(false)
+        abortControllerRef.current = null
       }
-    } finally {
-      setStreaming(false)
-      abortControllerRef.current = null
-    }
-  }, [currentSession, fetchSessions])
+    },
+    [currentSession, fetchSessions]
+  )
 
   // Initial load
   useEffect(() => {

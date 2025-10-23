@@ -33,9 +33,7 @@ export function SourceCitations({ sources, className }: SourceCitationsProps) {
             className="flex items-center gap-2 rounded-md bg-muted/50 px-2 py-1 text-xs"
           >
             <span className="font-medium text-foreground">[{index + 1}]</span>
-            <span className="text-muted-foreground">
-              Chunk {source.chunkIndex + 1}
-            </span>
+            <span className="text-muted-foreground">Chunk {source.chunkIndex + 1}</span>
             <span className="text-muted-foreground">
               {Math.round(source.similarity * 100)}% match
             </span>

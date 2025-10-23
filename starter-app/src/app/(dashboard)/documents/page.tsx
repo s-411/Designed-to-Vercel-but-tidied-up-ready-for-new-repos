@@ -11,15 +11,8 @@ import { useDocuments } from '@/hooks/use-documents'
 import Link from 'next/link'
 
 export default function DocumentsPage() {
-  const {
-    documents,
-    loading,
-    error,
-    uploadDocument,
-    deleteDocument,
-    uploadProgress,
-    isUploading,
-  } = useDocuments()
+  const { documents, loading, error, uploadDocument, deleteDocument, uploadProgress, isUploading } =
+    useDocuments()
 
   const getStatusBadge = (status: string) => {
     const styles = {
@@ -30,7 +23,9 @@ export default function DocumentsPage() {
     }
 
     return (
-      <span className={`rounded-full px-2 py-1 text-xs font-medium ${styles[status as keyof typeof styles] || ''}`}>
+      <span
+        className={`rounded-full px-2 py-1 text-xs font-medium ${styles[status as keyof typeof styles] || ''}`}
+      >
         {status}
       </span>
     )
@@ -71,10 +66,7 @@ export default function DocumentsPage() {
       <div>
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-xl font-semibold text-foreground">Your Documents</h2>
-          <Link
-            href="/chat"
-            className="text-sm text-primary hover:underline"
-          >
+          <Link href="/chat" className="text-sm text-primary hover:underline">
             Go to Chat →
           </Link>
         </div>
@@ -142,12 +134,7 @@ export default function DocumentsPage() {
                   className="ml-4 rounded-lg p-2 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
                   aria-label="Delete document"
                 >
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"

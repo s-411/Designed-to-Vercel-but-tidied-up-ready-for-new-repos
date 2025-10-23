@@ -134,9 +134,7 @@ export default function BillingPage() {
         ) : (
           <div className="rounded-lg border border-border bg-card p-8 text-center">
             <h2 className="mb-2 text-xl font-semibold">No Active Subscription</h2>
-            <p className="mb-6 text-muted-foreground">
-              Subscribe to a plan to unlock all features
-            </p>
+            <p className="mb-6 text-muted-foreground">Subscribe to a plan to unlock all features</p>
             <Link
               href="/pricing"
               className="inline-block rounded-lg bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"

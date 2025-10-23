@@ -91,9 +91,7 @@ export default function PricingPage() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 text-center">
           <h1 className="mb-4 text-4xl font-bold">Simple, transparent pricing</h1>
-          <p className="text-lg text-muted-foreground">
-            Choose the plan that's right for you
-          </p>
+          <p className="text-lg text-muted-foreground">Choose the plan that's right for you</p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
@@ -101,9 +99,7 @@ export default function PricingPage() {
             <div
               key={plan.id}
               className={`relative rounded-lg border p-8 ${
-                plan.popular
-                  ? 'border-primary bg-primary/5'
-                  : 'border-border bg-card'
+                plan.popular ? 'border-primary bg-primary/5' : 'border-border bg-card'
               }`}
             >
               {plan.popular && (

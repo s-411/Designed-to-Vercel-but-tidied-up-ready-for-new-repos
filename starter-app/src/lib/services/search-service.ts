@@ -111,17 +111,17 @@ export async function searchWithExpansion(
 /**
  * Hybrid search combining vector similarity and keyword matching
  */
-export async function hybridSearch(
-  query: string,
-  options: SearchOptions
-): Promise<SearchResult[]> {
+export async function hybridSearch(query: string, options: SearchOptions): Promise<SearchResult[]> {
   const supabase = createAdminClient()
 
   // 1. Vector similarity search
   const vectorResults = await searchDocuments(query, options)
 
   // 2. Full-text search using PostgreSQL
-  const keywords = query.toLowerCase().split(/\s+/).filter(w => w.length > 3)
+  const keywords = query
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(w => w.length > 3)
 
   if (keywords.length === 0) {
     return vectorResults

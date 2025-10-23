@@ -83,9 +83,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
 
         if (userMessageError) {
           controller.enqueue(
-            encoder.encode(
-              `data: ${JSON.stringify({ error: 'Failed to save user message' })}\n\n`
-            )
+            encoder.encode(`data: ${JSON.stringify({ error: 'Failed to save user message' })}\n\n`)
           )
           controller.close()
           return

@@ -21,10 +21,7 @@ export interface ChunkingOptions {
 /**
  * Chunk document text into smaller pieces
  */
-export function chunkDocument(
-  text: string,
-  options: ChunkingOptions = {}
-): Chunk[] {
+export function chunkDocument(text: string, options: ChunkingOptions = {}): Chunk[] {
   const {
     maxTokens = OPENAI_CONFIG.maxChunkTokens,
     overlapTokens = 50,
@@ -134,9 +131,7 @@ export function chunkDocument(
  */
 function splitIntoSentences(text: string): string[] {
   // Simple sentence splitter (can be improved with NLP libraries)
-  return text
-    .split(/(?<=[.!?])\s+/)
-    .filter(s => s.trim())
+  return text.split(/(?<=[.!?])\s+/).filter(s => s.trim())
 }
 
 /**

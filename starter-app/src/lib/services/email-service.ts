@@ -9,19 +9,27 @@ class EmailService {
 
   async sendTransactionalEmail(options: SendEmailOptions): Promise<void> {
     return this.transactionalCircuitBreaker.execute(async () => {
-      return retryWithBackoff(async () => {
-        const provider = createTransactionalEmailProvider()
-        await provider.sendEmail(options)
-      }, 3, 1000)
+      return retryWithBackoff(
+        async () => {
+          const provider = createTransactionalEmailProvider()
+          await provider.sendEmail(options)
+        },
+        3,
+        1000
+      )
     })
   }
 
   async addMarketingSubscriber(email: string, options?: AddSubscriberOptions): Promise<string> {
     return this.marketingCircuitBreaker.execute(async () => {
-      return retryWithBackoff(async () => {
-        const provider = createMarketingEmailProvider()
-        return provider.addSubscriber(email, options)
-      }, 3, 1000)
+      return retryWithBackoff(
+        async () => {
+          const provider = createMarketingEmailProvider()
+          return provider.addSubscriber(email, options)
+        },
+        3,
+        1000
+      )
     })
   }
 

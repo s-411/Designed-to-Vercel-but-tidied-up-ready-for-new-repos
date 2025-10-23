@@ -32,10 +32,7 @@ export function ThemeToggle() {
 
       {isOpen && (
         <>
-          <div
-            className="fixed inset-0 z-40"
-            onClick={() => setIsOpen(false)}
-          />
+          <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
           <div className="absolute right-0 z-50 mt-2 w-40 rounded-lg border border-border bg-background shadow-lg">
             <div className="p-1">
               <button

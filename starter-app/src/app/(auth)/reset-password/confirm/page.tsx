@@ -50,9 +50,7 @@ export default function ResetPasswordConfirmPage() {
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold">Create new password</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Enter your new password below
-          </p>
+          <p className="mt-2 text-sm text-muted-foreground">Enter your new password below</p>
         </div>
 
         <form onSubmit={handleUpdatePassword} className="mt-8 space-y-6">
@@ -76,9 +74,7 @@ export default function ResetPasswordConfirmPage() {
               placeholder="••••••••"
               minLength={8}
             />
-            <p className="mt-1 text-xs text-muted-foreground">
-              Must be at least 8 characters
-            </p>
+            <p className="mt-1 text-xs text-muted-foreground">Must be at least 8 characters</p>
           </div>
 
           <div>

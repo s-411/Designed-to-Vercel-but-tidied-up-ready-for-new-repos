@@ -168,8 +168,6 @@ export interface HealthCheck {
 }
 
 // Utility types
-export type Result<T, E = Error> =
-  | { success: true; value: T }
-  | { success: false; error: E }
+export type Result<T, E = Error> = { success: true; value: T } | { success: false; error: E }
 
 export type AsyncResult<T, E = Error> = Promise<Result<T, E>>

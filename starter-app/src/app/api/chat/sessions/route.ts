@@ -48,10 +48,7 @@ export async function POST(request: NextRequest) {
 
     if (createError) {
       console.error('Error creating chat session:', createError)
-      return NextResponse.json(
-        { error: 'Failed to create chat session' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Failed to create chat session' }, { status: 500 })
     }
 
     return NextResponse.json({ session })
@@ -65,10 +62,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -96,7 +90,11 @@ export async function GET(request: NextRequest) {
     const offset = parseInt(searchParams.get('offset') || '0')
 
     // Fetch sessions
-    const { data: sessions, error: fetchError, count } = await supabase
+    const {
+      data: sessions,
+      error: fetchError,
+      count,
+    } = await supabase
       .from('chat_sessions')
       .select('*', { count: 'exact' })
       .eq('user_id', user.id)
@@ -106,10 +104,7 @@ export async function GET(request: NextRequest) {
 
     if (fetchError) {
       console.error('Error fetching chat sessions:', fetchError)
-      return NextResponse.json(
-        { error: 'Failed to fetch chat sessions' },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: 'Failed to fetch chat sessions' }, { status: 500 })
     }
 
     return NextResponse.json({
@@ -122,9 +117,6 @@ export async function GET(request: NextRequest) {
     })
   } catch (error) {
     console.error('Chat sessions list error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

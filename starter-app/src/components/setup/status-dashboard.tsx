@@ -107,9 +107,7 @@ export function StatusDashboard() {
         }`}
       >
         <div className="flex items-center justify-center gap-2">
-          <span className="text-2xl">
-            {healthData.status === 'healthy' ? '✓' : '✗'}
-          </span>
+          <span className="text-2xl">{healthData.status === 'healthy' ? '✓' : '✗'}</span>
           <span
             className={`text-lg font-semibold ${
               healthData.status === 'healthy'
@@ -138,15 +136,11 @@ export function StatusDashboard() {
                   <span className={`text-xl ${getStatusColor(check.status)}`}>
                     {getStatusIcon(check.status)}
                   </span>
-                  <h3 className="font-semibold capitalize">
-                    {check.service.replace(/_/g, ' ')}
-                  </h3>
+                  <h3 className="font-semibold capitalize">{check.service.replace(/_/g, ' ')}</h3>
                 </div>
                 <p className="mt-1 text-xs text-muted-foreground">{check.message}</p>
                 {check.latency !== undefined && (
-                  <p className="mt-1 text-xs font-mono text-muted-foreground">
-                    {check.latency}ms
-                  </p>
+                  <p className="mt-1 text-xs font-mono text-muted-foreground">{check.latency}ms</p>
                 )}
               </div>
             </div>

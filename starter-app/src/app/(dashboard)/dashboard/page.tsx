@@ -25,9 +25,7 @@ export default async function DashboardPage() {
           <h1 className="text-3xl font-bold">
             Welcome back{profile?.first_name ? `, ${profile.first_name}` : ''}!
           </h1>
-          <p className="mt-2 text-muted-foreground">
-            Here's what's happening with your account
-          </p>
+          <p className="mt-2 text-muted-foreground">Here's what's happening with your account</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -41,11 +39,7 @@ export default async function DashboardPage() {
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Verified:</span>
-                <span
-                  className={
-                    profile?.email_verified ? 'text-green-600' : 'text-yellow-600'
-                  }
-                >
+                <span className={profile?.email_verified ? 'text-green-600' : 'text-yellow-600'}>
                   {profile?.email_verified ? 'Yes' : 'Pending'}
                 </span>
               </div>

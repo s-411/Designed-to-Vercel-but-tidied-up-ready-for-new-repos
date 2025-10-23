@@ -71,52 +71,55 @@ export function useDocuments(): UseDocumentsReturn {
   }, [fetchDocuments])
 
   // Upload document
-  const uploadDocument = useCallback(async (file: File, title?: string) => {
-    try {
-      setIsUploading(true)
-      setUploadProgress(0)
-      setError(null)
+  const uploadDocument = useCallback(
+    async (file: File, title?: string) => {
+      try {
+        setIsUploading(true)
+        setUploadProgress(0)
+        setError(null)
 
-      // Read file content
-      const content = await readFileAsText(file)
+        // Read file content
+        const content = await readFileAsText(file)
 
-      setUploadProgress(30)
+        setUploadProgress(30)
 
-      // Upload document
-      const response = await fetch('/api/documents', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          title: title || file.name,
-          fileName: file.name,
-          fileSize: file.size,
-          fileType: file.type,
-          storagePath: `documents/${Date.now()}-${file.name}`,
-          content,
-        }),
-      })
+        // Upload document
+        const response = await fetch('/api/documents', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            title: title || file.name,
+            fileName: file.name,
+            fileSize: file.size,
+            fileType: file.type,
+            storagePath: `documents/${Date.now()}-${file.name}`,
+            content,
+          }),
+        })
 
-      const data = await response.json()
+        const data = await response.json()
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to upload document')
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to upload document')
+        }
+
+        setUploadProgress(100)
+
+        // Refresh documents list
+        await fetchDocuments()
+      } catch (err) {
+        console.error('Error uploading document:', err)
+        setError(err instanceof Error ? err.message : 'Failed to upload document')
+        throw err
+      } finally {
+        setIsUploading(false)
+        setTimeout(() => setUploadProgress(null), 1000)
       }
-
-      setUploadProgress(100)
-
-      // Refresh documents list
-      await fetchDocuments()
-    } catch (err) {
-      console.error('Error uploading document:', err)
-      setError(err instanceof Error ? err.message : 'Failed to upload document')
-      throw err
-    } finally {
-      setIsUploading(false)
-      setTimeout(() => setUploadProgress(null), 1000)
-    }
-  }, [fetchDocuments])
+    },
+    [fetchDocuments]
+  )
 
   // Delete document
   const deleteDocument = useCallback(async (documentId: string) => {

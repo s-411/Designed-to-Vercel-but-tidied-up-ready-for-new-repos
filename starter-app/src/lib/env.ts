@@ -13,10 +13,16 @@ const envSchema = z.object({
     .regex(/^https:\/\/[a-z0-9-]+\.supabase\.co$/, 'Invalid Supabase URL format'),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z
     .string()
-    .regex(/^eyJ[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/, 'Invalid Supabase anon key format'),
+    .regex(
+      /^eyJ[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/,
+      'Invalid Supabase anon key format'
+    ),
   SUPABASE_SERVICE_ROLE_KEY: z
     .string()
-    .regex(/^eyJ[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/, 'Invalid Supabase service role key format')
+    .regex(
+      /^eyJ[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/,
+      'Invalid Supabase service role key format'
+    )
     .optional(),
 
   // Stripe
@@ -52,9 +58,7 @@ const envSchema = z.object({
   RESEND_FROM_EMAIL: z.string().email().optional(),
 
   // Email - Marketing Provider
-  EMAIL_PROVIDER: z
-    .enum(['convertkit', 'mailerlite', 'brevo', 'sender'])
-    .optional(),
+  EMAIL_PROVIDER: z.enum(['convertkit', 'mailerlite', 'brevo', 'sender']).optional(),
   CONVERTKIT_API_KEY: z.string().optional(),
   CONVERTKIT_API_SECRET: z.string().optional(),
   MAILERLITE_API_KEY: z.string().optional(),
@@ -155,9 +159,7 @@ function parseEnv() {
   if (!featureValidated.success) {
     console.error('❌ Feature validation failed:')
     console.error(featureValidated.error.message)
-    console.warn(
-      '⚠️  Warning: Some features may not work correctly due to missing API keys'
-    )
+    console.warn('⚠️  Warning: Some features may not work correctly due to missing API keys')
   }
 
   return parsed.data

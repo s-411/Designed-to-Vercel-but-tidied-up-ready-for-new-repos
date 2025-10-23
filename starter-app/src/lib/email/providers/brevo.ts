@@ -1,5 +1,10 @@
 import { env } from '@/lib/env'
-import type { EmailProvider, AddSubscriberOptions, SendEmailOptions, SubscriberInfo } from '../provider-interface'
+import type {
+  EmailProvider,
+  AddSubscriberOptions,
+  SendEmailOptions,
+  SubscriberInfo,
+} from '../provider-interface'
 import { EmailProviderError } from '../provider-interface'
 
 export class BrevoProvider implements EmailProvider {

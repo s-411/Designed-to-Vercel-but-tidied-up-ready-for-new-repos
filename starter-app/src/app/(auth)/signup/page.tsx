@@ -74,9 +74,7 @@ export default function SignupPage() {
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold">Create an account</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Get started with your free account
-          </p>
+          <p className="mt-2 text-sm text-muted-foreground">Get started with your free account</p>
         </div>
 
         <form onSubmit={handleSignup} className="mt-8 space-y-6">
@@ -151,9 +149,7 @@ export default function SignupPage() {
                 placeholder="••••••••"
                 minLength={8}
               />
-              <p className="mt-1 text-xs text-muted-foreground">
-                Must be at least 8 characters
-              </p>
+              <p className="mt-1 text-xs text-muted-foreground">Must be at least 8 characters</p>
             </div>
 
             <div>

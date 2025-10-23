@@ -49,9 +49,7 @@ export async function generateEmbedding(text: string): Promise<EmbeddingResult> 
  * Generate embeddings for multiple texts in batch
  * More efficient than multiple single calls
  */
-export async function generateEmbeddingsBatch(
-  texts: string[]
-): Promise<BatchEmbeddingResult> {
+export async function generateEmbeddingsBatch(texts: string[]): Promise<BatchEmbeddingResult> {
   if (texts.length === 0) {
     return {
       embeddings: [],
@@ -167,18 +165,13 @@ export function findMostSimilar(
     similarity: cosineSimilarity(queryEmbedding, embedding),
   }))
 
-  return similarities
-    .sort((a, b) => b.similarity - a.similarity)
-    .slice(0, topK)
+  return similarities.sort((a, b) => b.similarity - a.similarity).slice(0, topK)
 }
 
 /**
  * Validate embedding dimensions
  */
-export function isValidEmbedding(
-  embedding: number[],
-  expectedDimensions: number = 1536
-): boolean {
+export function isValidEmbedding(embedding: number[], expectedDimensions: number = 1536): boolean {
   return (
     Array.isArray(embedding) &&
     embedding.length === expectedDimensions &&
