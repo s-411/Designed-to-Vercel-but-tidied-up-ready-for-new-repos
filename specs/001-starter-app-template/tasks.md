@@ -24,15 +24,15 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create starter-app/ workspace directory structure per implementation plan
-- [ ] T002 Initialize Next.js 14+ project with TypeScript in starter-app/
-- [ ] T003 [P] Install core dependencies: Supabase client, Stripe, Resend, Tailwind CSS, Framer Motion
-- [ ] T004 [P] Configure TypeScript with strict mode in starter-app/tsconfig.json
-- [ ] T005 [P] Configure Tailwind CSS and integrate mm-design-system tokens in starter-app/tailwind.config.ts
-- [ ] T006 [P] Setup ESLint and Prettier configuration in starter-app/.eslintrc.json
-- [ ] T007 Create .env.example with all required environment variables in starter-app/
-- [ ] T008 [P] Create starter-app/README.md with quickstart instructions
-- [ ] T009 [P] Setup package.json scripts for dev, build, lint, and setup:check in starter-app/
+- [X] T001 Create starter-app/ workspace directory structure per implementation plan
+- [X] T002 Initialize Next.js 14+ project with TypeScript in starter-app/
+- [X] T003 [P] Install core dependencies: Supabase client, Stripe, Resend, Tailwind CSS, Framer Motion
+- [X] T004 [P] Configure TypeScript with strict mode in starter-app/tsconfig.json
+- [X] T005 [P] Configure Tailwind CSS and integrate mm-design-system tokens in starter-app/tailwind.config.ts
+- [X] T006 [P] Setup ESLint and Prettier configuration in starter-app/.eslintrc.json
+- [X] T007 Create .env.example with all required environment variables in starter-app/
+- [X] T008 [P] Create starter-app/README.md with quickstart instructions
+- [X] T009 [P] Setup package.json scripts for dev, build, lint, and setup:check in starter-app/
 
 ---
 
@@ -42,20 +42,20 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T010 Setup Supabase schema with user profiles table in infra/supabase/migrations/001_create_users.sql
-- [ ] T011 [P] Configure Supabase client with auth helpers in starter-app/src/lib/supabase.ts
-- [ ] T012 [P] Implement environment variable validation using Zod in starter-app/src/lib/env.ts
-- [ ] T013 [P] Create health check API endpoint in starter-app/src/app/api/health/route.ts
-- [ ] T014 [P] Setup authentication middleware for protected routes in starter-app/src/middleware.ts
-- [ ] T015 [P] Create root layout with providers (theme, auth) in starter-app/src/app/layout.tsx
-- [ ] T016 [P] Implement theme provider with dark/light/system modes in starter-app/src/components/providers/theme-provider.tsx
-- [ ] T017 [P] Create global styles importing design tokens in starter-app/src/app/globals.css
-- [ ] T018 [P] Setup error boundary and error handling utilities in starter-app/src/lib/errors.ts
-- [ ] T019 Create base TypeScript types for entities in starter-app/src/types/index.ts
-- [ ] T020 [P] Configure Jest with Next.js in starter-app/jest.config.js
-- [ ] T021 [P] Configure React Testing Library in starter-app/src/test-utils.tsx
-- [ ] T022 [P] Configure Chrome DevTools Protocol for E2E tests in starter-app/tests/e2e/setup.ts
-- [ ] T023 [P] Setup MSW (Mock Service Worker) for API mocking in starter-app/src/mocks/
+- [X] T010 Setup Supabase schema with user profiles table in infra/supabase/migrations/001_create_users.sql
+- [X] T011 [P] Configure Supabase client with auth helpers in starter-app/src/lib/supabase.ts
+- [X] T012 [P] Implement environment variable validation using Zod in starter-app/src/lib/env.ts
+- [X] T013 [P] Create health check API endpoint in starter-app/src/app/api/health/route.ts
+- [X] T014 [P] Setup authentication middleware for protected routes in starter-app/src/middleware.ts
+- [X] T015 [P] Create root layout with providers (theme, auth) in starter-app/src/app/layout.tsx
+- [X] T016 [P] Implement theme provider with dark/light/system modes in starter-app/src/components/providers/theme-provider.tsx
+- [X] T017 [P] Create global styles importing design tokens in starter-app/src/app/globals.css
+- [X] T018 [P] Setup error boundary and error handling utilities in starter-app/src/lib/errors.ts
+- [X] T019 Create base TypeScript types for entities in starter-app/src/types/index.ts
+- [X] T020 [P] Configure Jest with Next.js in starter-app/jest.config.js
+- [X] T021 [P] Configure React Testing Library in starter-app/src/test-utils.tsx
+- [X] T022 [P] Configure Chrome DevTools Protocol for E2E tests in starter-app/tests/e2e/setup.ts
+- [X] T023 [P] Setup MSW (Mock Service Worker) for API mocking in starter-app/src/mocks/
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 

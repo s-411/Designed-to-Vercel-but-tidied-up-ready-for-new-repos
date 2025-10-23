@@ -1,11 +1,15 @@
-import type { Metadata } from "next"
-import "mm-design-system/styles/globals.css"
-import { ThemeProvider } from "mm-design-system/lib/theme-provider"
-import { cn } from "mm-design-system/lib/utils"
+import type { Metadata } from 'next'
+import 'mm-design-system/styles/globals.css'
+import './globals.css'
+import { ThemeProvider } from '@/components/providers/theme-provider'
+import { cn } from 'mm-design-system/lib/utils'
 
 export const metadata: Metadata = {
-  title: "MM Starter Shell",
-  description: "Token-driven Next.js starter wired to the MM Design System.",
+  title: 'Starter App Template',
+  description: 'Production-ready Next.js starter with auth, payments, email, and AI-powered Q&A',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 type RootLayoutProps = Readonly<{
