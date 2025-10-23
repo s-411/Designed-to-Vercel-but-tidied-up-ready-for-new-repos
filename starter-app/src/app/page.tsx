@@ -1,56 +1,139 @@
+import Link from 'next/link'
+import { StatusDashboard } from '@/components/setup/status-dashboard'
+import { Navbar } from '@/components/layout/navbar'
+
 export default function Home() {
   return (
-    <main className="bg-background text-foreground">
-      <section className="border-b border-border bg-gradient-to-br from-primary/10 via-background to-background">
-        <div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-24 text-center md:py-32">
-          <span className="inline-flex items-center justify-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-sm font-semibold text-primary">
-            MM Design System Starter
-          </span>
-          <h1 className="text-balance text-4xl font-heading md:text-5xl">
-            Ship every screen with a single source of truth.
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            This starter is pre-wired to the MM Design System tokens, Tailwind theme extensions, and dark-mode provider.
-            Swap copy, add sections, and stay inside the design guardrails from the first commit.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <button type="button" className="btn-mm">
-              View Token Source
-            </button>
-            <a
-              href="https://github.com/s-411/design-to-vercel/blob/main/docs/AI_IMPLEMENTATION_GUIDE.md"
-              className="inline-flex items-center gap-2 rounded-card border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
-            >
-              Read the implementation guide
-            </a>
+    <>
+      <Navbar />
+      <main className="bg-background text-foreground">
+        {/* Hero Section */}
+        <section
+          data-testid="hero-section"
+          className="border-b border-border bg-gradient-to-br from-primary/10 via-background to-background"
+        >
+          <div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-24 text-center md:py-32">
+            <span className="inline-flex items-center justify-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-sm font-semibold text-primary">
+              Production-Ready Starter Template
+            </span>
+            <h1 className="text-balance text-4xl font-heading md:text-6xl">
+              Starter App Template
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+              Launch your Next.js SaaS in under 15 minutes with pre-configured authentication,
+              payments, email, and AI-powered Q&A. Built with TypeScript, Supabase, Stripe, and
+              OpenAI.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/signup"
+                data-testid="cta-button"
+                className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                Get Started
+              </Link>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-2 rounded-lg border border-border px-8 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+              >
+                View Pricing
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="mx-auto grid max-w-5xl gap-6 px-6 py-16 md:grid-cols-3">
-        {[
-          {
-            title: "Token Driven",
-            body: "Design tokens generate colors, typography, spacing, and Tailwind utilities so every surface stays in sync.",
-          },
-          {
-            title: "Ready for Dark Mode",
-            body: "Toggle themes using the shared ThemeProvider. Semantic tokens adapt automatically for optimal contrast.",
-          },
-          {
-            title: "AI Friendly",
-            body: "Lint rules block hard-coded colors and the docs include a starter prompt for new agents.",
-          },
-        ].map((item) => (
-          <article
-            key={item.title}
-            className="rounded-card border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
-          >
-            <h3 className="font-heading text-xl">{item.title}</h3>
-            <p className="mt-3 text-sm text-muted-foreground">{item.body}</p>
-          </article>
-        ))}
-      </section>
-    </main>
+        {/* Features Section */}
+        <section className="mx-auto max-w-5xl px-6 py-16">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-heading">Everything you need to launch fast</h2>
+            <p className="text-muted-foreground">
+              Pre-configured integrations and best practices out of the box
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: 'Authentication',
+                body: 'Complete auth flow with Supabase: signup, signin, password reset, email verification, and protected routes.',
+                icon: '🔐',
+              },
+              {
+                title: 'Payments',
+                body: 'Stripe integration with subscriptions, webhooks, customer portal, and pre-built pricing pages.',
+                icon: '💳',
+              },
+              {
+                title: 'Email',
+                body: 'Transactional emails with Resend + marketing email adapter for ConvertKit, MailerLite, Brevo, and Sender.',
+                icon: '📧',
+              },
+              {
+                title: 'RAG Q&A Chatbot',
+                body: 'AI-powered document Q&A with OpenAI, vector search, and source citations using pgvector.',
+                icon: '🤖',
+              },
+              {
+                title: 'Theme System',
+                body: 'Dark/light/system modes with persistent preferences and design system token integration.',
+                icon: '🎨',
+              },
+              {
+                title: 'Type Safety',
+                body: 'Strict TypeScript configuration with comprehensive type definitions and environment validation.',
+                icon: '🛡️',
+              },
+            ].map(item => (
+              <article
+                key={item.title}
+                className="rounded-card border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="mb-3 text-3xl">{item.icon}</div>
+                <h3 className="mb-2 font-heading text-xl">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Status Dashboard Section */}
+        <section className="border-t border-border bg-muted/30 py-16">
+          <div className="mx-auto max-w-5xl px-6">
+            <div className="mb-8 text-center">
+              <h2 className="mb-2 text-2xl font-heading">System Health</h2>
+              <p className="text-sm text-muted-foreground">
+                Real-time status of all integrated services
+              </p>
+            </div>
+            <StatusDashboard />
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="border-t border-border py-16">
+          <div className="mx-auto max-w-3xl px-6 text-center">
+            <h2 className="mb-4 text-3xl font-heading">Ready to build your SaaS?</h2>
+            <p className="mb-8 text-muted-foreground">
+              Clone the template, add your environment variables, and start building in minutes.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/signup"
+                className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                Start Building
+              </Link>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-border px-8 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   )
 }

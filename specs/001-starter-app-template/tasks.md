@@ -69,24 +69,24 @@
 
 ### Tests for User Story 1 (Write FIRST, verify they FAIL)
 
-- [ ] T024 [P] [US1] Write E2E test for landing page load in starter-app/tests/e2e/landing-page.spec.ts
-- [ ] T025 [P] [US1] Write integration test for health check API in starter-app/tests/integration/health-check.test.ts
-- [ ] T026 [P] [US1] Write unit test for setup validation script in starter-app/tests/unit/check-setup.test.ts
-- [ ] T027 [P] [US1] Write component test for status dashboard in starter-app/tests/components/status-dashboard.test.tsx
-- [ ] T028 [P] [US1] Write component test for theme toggle in starter-app/tests/components/theme-toggle.test.tsx
-- [ ] T029 [US1] Run all US1 tests and verify they FAIL (no implementation yet)
+- [X] T024 [P] [US1] Write E2E test for landing page load in starter-app/tests/e2e/landing-page.spec.ts
+- [X] T025 [P] [US1] Write integration test for health check API in starter-app/tests/integration/health-check.test.ts
+- [X] T026 [P] [US1] Write unit test for setup validation script in starter-app/tests/unit/check-setup.test.ts
+- [X] T027 [P] [US1] Write component test for status dashboard in starter-app/tests/components/status-dashboard.test.tsx
+- [X] T028 [P] [US1] Write component test for theme toggle in starter-app/tests/components/theme-toggle.test.tsx
+- [X] T029 [US1] Run all US1 tests and verify they FAIL (no implementation yet)
 
 ### Implementation for User Story 1
 
-- [ ] T030 [P] [US1] Create landing page with hero section in starter-app/src/app/page.tsx
-- [ ] T031 [P] [US1] Create setup validation script that checks all env vars in starter-app/src/scripts/check-setup.ts
-- [ ] T032 [P] [US1] Implement health check system that tests all service connections in starter-app/src/app/api/health/route.ts
-- [ ] T033 [US1] Create status dashboard component showing integration health in starter-app/src/components/setup/status-dashboard.tsx
-- [ ] T034 [P] [US1] Document all environment variables with descriptions in starter-app/.env.example
-- [ ] T035 [P] [US1] Create quickstart documentation in starter-app/README.md with setup steps
-- [ ] T036 [US1] Implement theme toggle component in navbar in starter-app/src/components/ui/theme-toggle.tsx
-- [ ] T037 [US1] Create responsive navbar with navigation in starter-app/src/components/layout/navbar.tsx
-- [ ] T038 [US1] Add setup:check npm script to package.json that validates configuration
+- [X] T030 [P] [US1] Create landing page with hero section in starter-app/src/app/page.tsx
+- [X] T031 [P] [US1] Create setup validation script that checks all env vars in starter-app/src/scripts/check-setup.ts
+- [X] T032 [P] [US1] Implement health check system that tests all service connections in starter-app/src/app/api/health/route.ts
+- [X] T033 [US1] Create status dashboard component showing integration health in starter-app/src/components/setup/status-dashboard.tsx
+- [X] T034 [P] [US1] Document all environment variables with descriptions in starter-app/.env.example
+- [X] T035 [P] [US1] Create quickstart documentation in starter-app/README.md with setup steps
+- [X] T036 [US1] Implement theme toggle component in navbar in starter-app/src/components/ui/theme-toggle.tsx
+- [X] T037 [US1] Create responsive navbar with navigation in starter-app/src/components/layout/navbar.tsx
+- [X] T038 [US1] Add setup:check npm script to package.json that validates configuration
 - [ ] T039 [US1] Run all US1 tests and verify they PASS
 
 **Checkpoint**: At this point, User Story 1 should be fully functional - developers can bootstrap and run the app

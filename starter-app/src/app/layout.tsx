@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
-import 'mm-design-system/styles/globals.css'
 import './globals.css'
 import { ThemeProvider } from '@/components/providers/theme-provider'
-import { cn } from 'mm-design-system/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Starter App Template',
@@ -19,12 +17,7 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background text-foreground antialiased",
-          "font-body",
-        )}
-      >
+      <body className="min-h-screen bg-background text-foreground antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
