@@ -31,11 +31,38 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-**Token-First Development**: All styling MUST use tokens from `design-tokens.json` - no hard-coded values
-**Guardrail Enforcement**: `npm run tokens:check` and lint rules MUST pass
-**Workspace Orchestration**: Changes MUST go through `mm-design-system` package interface
-**Visual Fidelity**: Components MUST match demo sections and canvas screenshots
-**Library-First Architecture**: Features MUST be built as reusable library components first
+Verify compliance with MM Design System Constitution (`.specify/memory/constitution.md`):
+
+### Core Principles Compliance
+
+- **I. Token-First**: ✅/❌ All visual properties derive from design tokens?
+  - If ❌: Justification and migration plan required
+- **II. Modular Architecture**: ✅/❌ Feature fits within workspace structure?
+  - If ❌: Document which package(s) affected and integration points
+- **III. Test-First Development**: ✅/❌ Tests will be written before implementation?
+  - If ❌: Not acceptable - tests are mandatory
+- **IV. Accessibility**: ✅/❌ Feature supports WCAG AA, keyboard nav, screen readers?
+  - If ❌: Justification required and remediation plan
+- **V. Responsive & Mobile-First**: ✅/❌ Mobile-first design approach planned?
+  - If ❌: Justification required and responsive strategy
+
+### Technical Standards Compliance
+
+- **Build Workflow**: ✅/❌ Feature follows token generation workflow?
+  - Token changes require `npm run tokens:build` + `npm run tokens:check`
+- **Code Style**: ✅/❌ TypeScript strict mode, token-backed Tailwind utilities?
+  - No hard-coded colors, spacing, or visual properties
+- **Quality Gates**: ✅/❌ Lint and test gates will pass before PR?
+  - Must pass `npm run lint:demo` / `npm run lint:starter`
+
+### Complexity Review
+
+> **Fill ONLY if any check above is ❌**
+
+| Violation | Why Needed | Simpler Alternative Rejected Because |
+|-----------|------------|-------------------------------------|
+| [e.g., Hard-coded color] | [specific reason] | [why tokens insufficient] |
+| [e.g., Skip tests] | [specific reason] | [why TDD not feasible] |
 
 ## Project Structure
 
