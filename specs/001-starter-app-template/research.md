@@ -6,23 +6,25 @@
 
 ## Testing Framework Decision
 
-**Decision**: Jest + React Testing Library + Playwright + Mock Service Worker (MSW)
+**Decision**: Jest + React Testing Library + Chrome DevTools Protocol + Mock Service Worker (MSW)
 
 **Rationale**:
 - Jest has 95% market share and zero-config setup for Next.js applications
-- Playwright offers superior cross-browser support and better performance than Cypress
+- Chrome DevTools Protocol provides native browser automation without external dependencies
 - MSW provides seamless API mocking for development and testing
 - Multi-layered approach covers unit, integration, and E2E testing needs
+- CDP leverages Chrome's built-in testing capabilities for lightweight E2E tests
 
 **Alternatives considered**:
 - Vitest (faster but less ecosystem maturity)
-- Cypress (good but Playwright has better performance and reliability)
+- Playwright (powerful but adds significant dependency weight for template)
+- Cypress (good but heavier and slower than CDP)
 - Jest alone (insufficient for full template validation)
 
 **Implementation approach**:
 - Unit tests: Jest + React Testing Library for components
 - Integration tests: Real APIs in test mode for service validation
-- E2E tests: Playwright for complete user flows
+- E2E tests: Chrome DevTools Protocol for complete user flows
 - Template validation: Custom scripts that verify setup after cloning
 
 ## Email Provider Adapter Decision
@@ -129,7 +131,7 @@ infra/                              # Infrastructure setup
 **Email**: Multi-provider adapter (ConvertKit, MailerLite, Brevo, Sender)
 **Styling**: Tailwind CSS + mm-design-system tokens
 **AI/RAG**: OpenAI embeddings + GPT-4 + Vercel AI SDK
-**Testing**: Jest + React Testing Library + Playwright + MSW
+**Testing**: Jest + React Testing Library + Chrome DevTools Protocol + MSW
 **Deployment**: Vercel with environment variable configuration
 
 ## Performance Targets

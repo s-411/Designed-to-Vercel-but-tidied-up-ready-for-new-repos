@@ -3,9 +3,9 @@
 **Input**: Design documents from `/specs/001-starter-app-template/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**Tests**: Tests are OPTIONAL and not included in this implementation plan unless explicitly requested.
+**Tests**: Following MM Design System Constitution Principle III (Test-First Development), tests are written BEFORE implementation to ensure requirements are well-defined and testable.
 
-**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
+**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story. Each user story follows the pattern: Tests (write & verify fail) → Implementation → Verify tests pass.
 
 ## Format: `[ID] [P?] [Story] Description`
 
@@ -52,6 +52,10 @@
 - [ ] T017 [P] Create global styles importing design tokens in starter-app/src/app/globals.css
 - [ ] T018 [P] Setup error boundary and error handling utilities in starter-app/src/lib/errors.ts
 - [ ] T019 Create base TypeScript types for entities in starter-app/src/types/index.ts
+- [ ] T020 [P] Configure Jest with Next.js in starter-app/jest.config.js
+- [ ] T021 [P] Configure React Testing Library in starter-app/src/test-utils.tsx
+- [ ] T022 [P] Configure Chrome DevTools Protocol for E2E tests in starter-app/tests/e2e/setup.ts
+- [ ] T023 [P] Setup MSW (Mock Service Worker) for API mocking in starter-app/src/mocks/
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -63,17 +67,27 @@
 
 **Independent Test**: Clone repo, copy .env.example to .env.local, add valid API keys, run dev server, verify app starts without errors and shows functional landing page
 
+### Tests for User Story 1 (Write FIRST, verify they FAIL)
+
+- [ ] T024 [P] [US1] Write E2E test for landing page load in starter-app/tests/e2e/landing-page.spec.ts
+- [ ] T025 [P] [US1] Write integration test for health check API in starter-app/tests/integration/health-check.test.ts
+- [ ] T026 [P] [US1] Write unit test for setup validation script in starter-app/tests/unit/check-setup.test.ts
+- [ ] T027 [P] [US1] Write component test for status dashboard in starter-app/tests/components/status-dashboard.test.tsx
+- [ ] T028 [P] [US1] Write component test for theme toggle in starter-app/tests/components/theme-toggle.test.tsx
+- [ ] T029 [US1] Run all US1 tests and verify they FAIL (no implementation yet)
+
 ### Implementation for User Story 1
 
-- [ ] T020 [P] [US1] Create landing page with hero section in starter-app/src/app/page.tsx
-- [ ] T021 [P] [US1] Create setup validation script that checks all env vars in starter-app/src/scripts/check-setup.ts
-- [ ] T022 [P] [US1] Implement health check system that tests all service connections in starter-app/src/app/api/health/route.ts
-- [ ] T023 [US1] Create status dashboard component showing integration health in starter-app/src/components/setup/status-dashboard.tsx
-- [ ] T024 [P] [US1] Document all environment variables with descriptions in starter-app/.env.example
-- [ ] T025 [P] [US1] Create quickstart documentation in starter-app/README.md with setup steps
-- [ ] T026 [US1] Implement theme toggle component in navbar in starter-app/src/components/ui/theme-toggle.tsx
-- [ ] T027 [US1] Create responsive navbar with navigation in starter-app/src/components/layout/navbar.tsx
-- [ ] T028 [US1] Add setup:check npm script to package.json that validates configuration
+- [ ] T030 [P] [US1] Create landing page with hero section in starter-app/src/app/page.tsx
+- [ ] T031 [P] [US1] Create setup validation script that checks all env vars in starter-app/src/scripts/check-setup.ts
+- [ ] T032 [P] [US1] Implement health check system that tests all service connections in starter-app/src/app/api/health/route.ts
+- [ ] T033 [US1] Create status dashboard component showing integration health in starter-app/src/components/setup/status-dashboard.tsx
+- [ ] T034 [P] [US1] Document all environment variables with descriptions in starter-app/.env.example
+- [ ] T035 [P] [US1] Create quickstart documentation in starter-app/README.md with setup steps
+- [ ] T036 [US1] Implement theme toggle component in navbar in starter-app/src/components/ui/theme-toggle.tsx
+- [ ] T037 [US1] Create responsive navbar with navigation in starter-app/src/components/layout/navbar.tsx
+- [ ] T038 [US1] Add setup:check npm script to package.json that validates configuration
+- [ ] T039 [US1] Run all US1 tests and verify they PASS
 
 **Checkpoint**: At this point, User Story 1 should be fully functional - developers can bootstrap and run the app
 
@@ -85,22 +99,33 @@
 
 **Independent Test**: Sign up new user, log in, reset password, access protected routes without re-authentication
 
+### Tests for User Story 2 (Write FIRST, verify they FAIL)
+
+- [ ] T040 [P] [US2] Write E2E test for complete signup flow in starter-app/tests/e2e/auth-signup.spec.ts
+- [ ] T041 [P] [US2] Write E2E test for signin flow in starter-app/tests/e2e/auth-signin.spec.ts
+- [ ] T042 [P] [US2] Write E2E test for password reset flow in starter-app/tests/e2e/auth-password-reset.spec.ts
+- [ ] T043 [P] [US2] Write integration test for user profile API in starter-app/tests/integration/user-profile-api.test.ts
+- [ ] T044 [P] [US2] Write integration test for protected route middleware in starter-app/tests/integration/auth-middleware.test.ts
+- [ ] T045 [P] [US2] Write component tests for auth forms in starter-app/tests/components/auth-forms.test.tsx
+- [ ] T046 [US2] Run all US2 tests and verify they FAIL (no implementation yet)
+
 ### Implementation for User Story 2
 
-- [ ] T029 [P] [US2] Create auth routes group structure in starter-app/src/app/(auth)/
-- [ ] T030 [P] [US2] Implement signup page with form validation in starter-app/src/app/(auth)/signup/page.tsx
-- [ ] T031 [P] [US2] Implement signin page with form validation in starter-app/src/app/(auth)/signin/page.tsx
-- [ ] T032 [P] [US2] Implement password reset request page in starter-app/src/app/(auth)/reset-password/page.tsx
-- [ ] T033 [P] [US2] Implement password reset confirmation page in starter-app/src/app/(auth)/reset-password/confirm/page.tsx
-- [ ] T034 [US2] Create Supabase auth API route handlers in starter-app/src/app/api/auth/callback/route.ts
-- [ ] T035 [US2] Implement user profile API endpoints (GET, PATCH) in starter-app/src/app/api/user/profile/route.ts
-- [ ] T036 [P] [US2] Create protected dashboard route in starter-app/src/app/(dashboard)/dashboard/page.tsx
-- [ ] T037 [P] [US2] Create profile management page in starter-app/src/app/(dashboard)/profile/page.tsx
-- [ ] T038 [P] [US2] Create auth form components (inputs, buttons, validation) in starter-app/src/components/auth/
-- [ ] T039 [US2] Configure email verification workflow with Supabase in infra/supabase/migrations/002_auth_setup.sql
-- [ ] T040 [US2] Create email templates for auth (verification, password reset) in starter-app/src/lib/email/templates/
-- [ ] T041 [US2] Implement useUser hook for auth state management in starter-app/src/hooks/use-user.ts
-- [ ] T042 [US2] Update middleware to protect dashboard routes in starter-app/src/middleware.ts
+- [ ] T047 [P] [US2] Create auth routes group structure in starter-app/src/app/(auth)/
+- [ ] T048 [P] [US2] Implement signup page with form validation in starter-app/src/app/(auth)/signup/page.tsx
+- [ ] T049 [P] [US2] Implement signin page with form validation in starter-app/src/app/(auth)/signin/page.tsx
+- [ ] T050 [P] [US2] Implement password reset request page in starter-app/src/app/(auth)/reset-password/page.tsx
+- [ ] T051 [P] [US2] Implement password reset confirmation page in starter-app/src/app/(auth)/reset-password/confirm/page.tsx
+- [ ] T052 [US2] Create Supabase auth API route handlers in starter-app/src/app/api/auth/callback/route.ts
+- [ ] T053 [US2] Implement user profile API endpoints (GET, PATCH) in starter-app/src/app/api/user/profile/route.ts
+- [ ] T054 [P] [US2] Create protected dashboard route in starter-app/src/app/(dashboard)/dashboard/page.tsx
+- [ ] T055 [P] [US2] Create profile management page in starter-app/src/app/(dashboard)/profile/page.tsx
+- [ ] T056 [P] [US2] Create auth form components (inputs, buttons, validation) in starter-app/src/components/auth/
+- [ ] T057 [US2] Configure email verification workflow with Supabase in infra/supabase/migrations/002_auth_setup.sql
+- [ ] T058 [US2] Create email templates for auth (verification, password reset) in starter-app/src/lib/email/templates/
+- [ ] T059 [US2] Implement useUser hook for auth state management in starter-app/src/hooks/use-user.ts
+- [ ] T060 [US2] Update middleware to protect dashboard routes in starter-app/src/middleware.ts
+- [ ] T061 [US2] Run all US2 tests and verify they PASS
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently - full auth flow operational
 
@@ -112,22 +137,31 @@
 
 **Independent Test**: Initiate test payment with Stripe test keys, complete checkout, verify webhook receipt and user account upgrade
 
+### Tests for User Story 3 (Write FIRST, verify they FAIL)
+
+- [ ] T062 [P] [US3] Write E2E test for complete checkout flow in starter-app/tests/e2e/stripe-checkout.spec.ts
+- [ ] T063 [P] [US3] Write integration test for Stripe webhook handling in starter-app/tests/integration/stripe-webhook.test.ts
+- [ ] T064 [P] [US3] Write integration test for subscription API endpoints in starter-app/tests/integration/subscription-api.test.ts
+- [ ] T065 [P] [US3] Write component tests for pricing cards in starter-app/tests/components/pricing-card.test.tsx
+- [ ] T066 [US3] Run all US3 tests and verify they FAIL (no implementation yet)
+
 ### Implementation for User Story 3
 
-- [ ] T043 [P] [US3] Create Subscription entity table in infra/supabase/migrations/003_create_subscriptions.sql
-- [ ] T044 [US3] Configure Stripe client with API keys in starter-app/src/lib/stripe.ts
-- [ ] T045 [P] [US3] Create Stripe checkout API endpoint in starter-app/src/app/api/stripe/checkout/route.ts
-- [ ] T046 [P] [US3] Create Stripe customer portal API endpoint in starter-app/src/app/api/stripe/portal/route.ts
-- [ ] T047 [US3] Implement Stripe webhook handler in starter-app/src/app/api/stripe/webhook/route.ts
-- [ ] T048 [P] [US3] Create pricing page with subscription tiers in starter-app/src/app/pricing/page.tsx
-- [ ] T049 [P] [US3] Create billing management page in starter-app/src/app/(dashboard)/billing/page.tsx
-- [ ] T050 [P] [US3] Create pricing card components in starter-app/src/components/billing/pricing-card.tsx
-- [ ] T051 [P] [US3] Create subscription status badge component in starter-app/src/components/billing/subscription-badge.tsx
-- [ ] T052 [US3] Implement subscription service layer in starter-app/src/lib/services/subscription-service.ts
-- [ ] T053 [US3] Create Stripe product and price configuration in infra/stripe/products.json
-- [ ] T054 [US3] Add subscription status to user profile type in starter-app/src/types/index.ts
-- [ ] T055 [US3] Update user profile API to include subscription data in starter-app/src/app/api/user/profile/route.ts
-- [ ] T056 [US3] Create setup guide for Stripe webhooks in infra/docs/setup-guides/stripe-setup.md
+- [ ] T067 [P] [US3] Create Subscription entity table in infra/supabase/migrations/003_create_subscriptions.sql
+- [ ] T068 [US3] Configure Stripe client with API keys in starter-app/src/lib/stripe.ts
+- [ ] T069 [P] [US3] Create Stripe checkout API endpoint in starter-app/src/app/api/stripe/checkout/route.ts
+- [ ] T070 [P] [US3] Create Stripe customer portal API endpoint in starter-app/src/app/api/stripe/portal/route.ts
+- [ ] T071 [US3] Implement Stripe webhook handler in starter-app/src/app/api/stripe/webhook/route.ts
+- [ ] T072 [P] [US3] Create pricing page with subscription tiers in starter-app/src/app/pricing/page.tsx
+- [ ] T073 [P] [US3] Create billing management page in starter-app/src/app/(dashboard)/billing/page.tsx
+- [ ] T074 [P] [US3] Create pricing card components in starter-app/src/components/billing/pricing-card.tsx
+- [ ] T075 [P] [US3] Create subscription status badge component in starter-app/src/components/billing/subscription-badge.tsx
+- [ ] T076 [US3] Implement subscription service layer in starter-app/src/lib/services/subscription-service.ts
+- [ ] T077 [US3] Create Stripe product and price configuration in infra/stripe/products.json
+- [ ] T078 [US3] Add subscription status to user profile type in starter-app/src/types/index.ts
+- [ ] T079 [US3] Update user profile API to include subscription data in starter-app/src/app/api/user/profile/route.ts
+- [ ] T080 [US3] Create setup guide for Stripe webhooks in infra/docs/setup-guides/stripe-setup.md
+- [ ] T081 [US3] Run all US3 tests and verify they PASS
 
 **Checkpoint**: All core payment functionality operational - users can subscribe and manage billing
 
@@ -139,25 +173,33 @@
 
 **Independent Test**: Trigger transactional email events, verify emails sent within 5 seconds, add user to marketing list on signup
 
+### Tests for User Story 4 (Write FIRST, verify they FAIL)
+
+- [ ] T082 [P] [US4] Write integration tests for email provider adapters in starter-app/tests/integration/email-providers.test.ts
+- [ ] T083 [P] [US4] Write integration test for email service with circuit breaker in starter-app/tests/integration/email-service.test.ts
+- [ ] T084 [P] [US4] Write component tests for email templates in starter-app/tests/components/email-templates.test.tsx
+- [ ] T085 [US4] Run all US4 tests and verify they FAIL (no implementation yet)
+
 ### Implementation for User Story 4
 
-- [ ] T057 [P] [US4] Create Email Subscriber entity table in infra/supabase/migrations/004_create_email_subscribers.sql
-- [ ] T058 [US4] Implement email provider interface in starter-app/src/lib/email/provider-interface.ts
-- [ ] T059 [P] [US4] Create Resend adapter for transactional emails in starter-app/src/lib/email/providers/resend.ts
-- [ ] T060 [P] [US4] Create ConvertKit adapter in starter-app/src/lib/email/providers/convertkit.ts
-- [ ] T061 [P] [US4] Create MailerLite adapter in starter-app/src/lib/email/providers/mailerlite.ts
-- [ ] T062 [P] [US4] Create Brevo adapter in starter-app/src/lib/email/providers/brevo.ts
-- [ ] T063 [P] [US4] Create Sender adapter in starter-app/src/lib/email/providers/sender.ts
-- [ ] T064 [US4] Implement email provider factory with env-based selection in starter-app/src/lib/email/factory.ts
-- [ ] T065 [P] [US4] Create welcome email template in starter-app/src/lib/email/templates/welcome.tsx
-- [ ] T066 [P] [US4] Create subscription confirmation template in starter-app/src/lib/email/templates/subscription-confirmed.tsx
-- [ ] T067 [P] [US4] Create password reset email template in starter-app/src/lib/email/templates/password-reset.tsx
-- [ ] T068 [US4] Create email subscription API endpoint in starter-app/src/app/api/email/subscribe/route.ts
-- [ ] T069 [US4] Implement email service with retry and circuit breaker in starter-app/src/lib/services/email-service.ts
-- [ ] T070 [US4] Add email sending to user signup flow in starter-app/src/app/api/auth/callback/route.ts
-- [ ] T071 [US4] Add email sending to subscription webhook events in starter-app/src/app/api/stripe/webhook/route.ts
-- [ ] T072 [P] [US4] Create email preferences page in starter-app/src/app/(dashboard)/preferences/page.tsx
-- [ ] T073 [P] [US4] Create setup guides for each email provider in infra/docs/setup-guides/
+- [ ] T086 [P] [US4] Create Email Subscriber entity table in infra/supabase/migrations/004_create_email_subscribers.sql
+- [ ] T087 [US4] Implement email provider interface in starter-app/src/lib/email/provider-interface.ts
+- [ ] T088 [P] [US4] Create Resend adapter for transactional emails in starter-app/src/lib/email/providers/resend.ts
+- [ ] T089 [P] [US4] Create ConvertKit adapter in starter-app/src/lib/email/providers/convertkit.ts
+- [ ] T090 [P] [US4] Create MailerLite adapter in starter-app/src/lib/email/providers/mailerlite.ts
+- [ ] T091 [P] [US4] Create Brevo adapter in starter-app/src/lib/email/providers/brevo.ts
+- [ ] T092 [P] [US4] Create Sender adapter in starter-app/src/lib/email/providers/sender.ts
+- [ ] T093 [US4] Implement email provider factory with env-based selection in starter-app/src/lib/email/factory.ts
+- [ ] T094 [P] [US4] Create welcome email template in starter-app/src/lib/email/templates/welcome.tsx
+- [ ] T095 [P] [US4] Create subscription confirmation template in starter-app/src/lib/email/templates/subscription-confirmed.tsx
+- [ ] T096 [P] [US4] Create password reset email template in starter-app/src/lib/email/templates/password-reset.tsx
+- [ ] T097 [US4] Create email subscription API endpoint in starter-app/src/app/api/email/subscribe/route.ts
+- [ ] T098 [US4] Implement email service with retry and circuit breaker in starter-app/src/lib/services/email-service.ts
+- [ ] T099 [US4] Add email sending to user signup flow in starter-app/src/app/api/auth/callback/route.ts
+- [ ] T100 [US4] Add email sending to subscription webhook events in starter-app/src/app/api/stripe/webhook/route.ts
+- [ ] T101 [P] [US4] Create email preferences page in starter-app/src/app/(dashboard)/preferences/page.tsx
+- [ ] T102 [P] [US4] Create setup guides for each email provider in infra/docs/setup-guides/
+- [ ] T103 [US4] Run all US4 tests and verify they PASS
 
 **Checkpoint**: Email infrastructure complete - transactional and marketing emails operational
 
@@ -169,18 +211,26 @@
 
 **Independent Test**: Toggle themes and verify entire app updates consistently, check responsive breakpoints on mobile, change primary color in design tokens and verify all components reflect change
 
+### Tests for User Story 5 (Write FIRST, verify they FAIL)
+
+- [ ] T104 [P] [US5] Write E2E test for theme switching persistence in starter-app/tests/e2e/theme-switching.spec.ts
+- [ ] T105 [P] [US5] Write component tests for responsive layouts in starter-app/tests/components/responsive-layout.test.tsx
+- [ ] T106 [P] [US5] Write unit tests for breakpoint hook in starter-app/tests/unit/use-breakpoint.test.ts
+- [ ] T107 [US5] Run all US5 tests and verify they FAIL (no implementation yet)
+
 ### Implementation for User Story 5
 
-- [ ] T074 [P] [US5] Create theme configuration with design system tokens in starter-app/src/lib/theme-config.ts
-- [ ] T075 [P] [US5] Implement theme persistence with localStorage in starter-app/src/hooks/use-theme.ts
-- [ ] T076 [P] [US5] Create responsive layout wrapper components in starter-app/src/components/layout/
-- [ ] T077 [P] [US5] Implement mobile navigation menu with animations in starter-app/src/components/layout/mobile-nav.tsx
-- [ ] T078 [P] [US5] Create breakpoint detection hook in starter-app/src/hooks/use-breakpoint.ts
-- [ ] T079 [P] [US5] Add theme-aware color utilities in starter-app/src/lib/utils/colors.ts
-- [ ] T080 [P] [US5] Create theme customization guide in infra/docs/customization-guide.md
-- [ ] T081 [US5] Update all existing components to respect theme tokens in starter-app/src/components/
-- [ ] T082 [US5] Test theme switching across all pages and components
-- [ ] T083 [US5] Validate responsive behavior at mobile (320px), tablet (768px), and desktop (1024px+) breakpoints
+- [ ] T108 [P] [US5] Create theme configuration with design system tokens in starter-app/src/lib/theme-config.ts
+- [ ] T109 [P] [US5] Implement theme persistence with localStorage in starter-app/src/hooks/use-theme.ts
+- [ ] T110 [P] [US5] Create responsive layout wrapper components in starter-app/src/components/layout/
+- [ ] T111 [P] [US5] Implement mobile navigation menu with animations in starter-app/src/components/layout/mobile-nav.tsx
+- [ ] T112 [P] [US5] Create breakpoint detection hook in starter-app/src/hooks/use-breakpoint.ts
+- [ ] T113 [P] [US5] Add theme-aware color utilities in starter-app/src/lib/utils/colors.ts
+- [ ] T114 [P] [US5] Create theme customization guide in infra/docs/customization-guide.md
+- [ ] T115 [US5] Update all existing components to respect theme tokens in starter-app/src/components/
+- [ ] T116 [US5] Test theme switching across all pages and components
+- [ ] T117 [US5] Validate responsive behavior at mobile (320px), tablet (768px), and desktop (1024px+) breakpoints
+- [ ] T118 [US5] Run all US5 tests and verify they PASS
 
 **Checkpoint**: Theme system fully integrated - all UI respects theme and responsive design
 
@@ -192,31 +242,41 @@
 
 **Independent Test**: Upload PDF/text file, wait for processing completion, ask questions about document, verify responses include source citations
 
+### Tests for RAG Feature (Write FIRST, verify they FAIL)
+
+- [ ] T119 [P] [US6] Write E2E test for complete document upload and Q&A flow in starter-app/tests/e2e/rag-flow.spec.ts
+- [ ] T120 [P] [US6] Write integration test for document processing pipeline in starter-app/tests/integration/document-processing.test.ts
+- [ ] T121 [P] [US6] Write integration test for RAG retrieval and generation in starter-app/tests/integration/rag-pipeline.test.ts
+- [ ] T122 [P] [US6] Write integration test for vector similarity search in starter-app/tests/integration/vector-search.test.ts
+- [ ] T123 [P] [US6] Write component tests for chat interface in starter-app/tests/components/chat-interface.test.tsx
+- [ ] T124 [US6] Run all RAG tests and verify they FAIL (no implementation yet)
+
 ### Implementation for RAG Feature
 
-- [ ] T084 [P] Create Document entity table with pgvector in infra/supabase/migrations/005_create_documents.sql
-- [ ] T085 [P] Create Document Chunk entity table with vector embeddings in infra/supabase/migrations/006_create_document_chunks.sql
-- [ ] T086 [P] Create Chat Session entity table in infra/supabase/migrations/007_create_chat_sessions.sql
-- [ ] T087 [P] Create Chat Message entity table in infra/supabase/migrations/008_create_chat_messages.sql
-- [ ] T088 [P] Enable pgvector extension in Supabase in infra/supabase/enable-vector.sql
-- [ ] T089 [US6] Configure OpenAI client in starter-app/src/lib/openai.ts
-- [ ] T090 [P] [US6] Implement document upload API endpoint in starter-app/src/app/api/documents/route.ts
-- [ ] T091 [P] [US6] Implement document list/get/delete API endpoints in starter-app/src/app/api/documents/[documentId]/route.ts
-- [ ] T092 [US6] Implement document chunking service in starter-app/src/lib/services/chunking-service.ts
-- [ ] T093 [US6] Implement embedding generation service in starter-app/src/lib/services/embedding-service.ts
-- [ ] T094 [US6] Implement vector similarity search in starter-app/src/lib/services/search-service.ts
-- [ ] T095 [P] [US6] Create chat session API endpoints in starter-app/src/app/api/chat/sessions/route.ts
-- [ ] T096 [P] [US6] Create chat message API endpoints with streaming in starter-app/src/app/api/chat/sessions/[sessionId]/messages/route.ts
-- [ ] T097 [US6] Implement RAG pipeline (retrieve → augment → generate) in starter-app/src/lib/services/rag-service.ts
-- [ ] T098 [P] [US6] Create document upload page in starter-app/src/app/(dashboard)/documents/page.tsx
-- [ ] T099 [P] [US6] Create chat interface page in starter-app/src/app/(dashboard)/chat/page.tsx
-- [ ] T100 [P] [US6] Create document upload component with progress in starter-app/src/components/chat/document-upload.tsx
-- [ ] T101 [P] [US6] Create chat message list component in starter-app/src/components/chat/message-list.tsx
-- [ ] T102 [P] [US6] Create chat input component in starter-app/src/components/chat/chat-input.tsx
-- [ ] T103 [P] [US6] Create source citation components in starter-app/src/components/chat/source-citations.tsx
-- [ ] T104 [US6] Implement document processing background job in starter-app/src/lib/jobs/process-document.ts
-- [ ] T105 [US6] Create useChat hook for managing chat state in starter-app/src/hooks/use-chat.ts
-- [ ] T106 [US6] Create useDocuments hook for document management in starter-app/src/hooks/use-documents.ts
+- [ ] T125 [P] [US6] Create Document entity table with pgvector in infra/supabase/migrations/005_create_documents.sql
+- [ ] T126 [P] [US6] Create Document Chunk entity table with vector embeddings in infra/supabase/migrations/006_create_document_chunks.sql
+- [ ] T127 [P] [US6] Create Chat Session entity table in infra/supabase/migrations/007_create_chat_sessions.sql
+- [ ] T128 [P] [US6] Create Chat Message entity table in infra/supabase/migrations/008_create_chat_messages.sql
+- [ ] T129 [US6] Enable pgvector extension in Supabase in infra/supabase/enable-vector.sql
+- [ ] T130 [US6] Configure OpenAI client in starter-app/src/lib/openai.ts
+- [ ] T131 [P] [US6] Implement document upload API endpoint in starter-app/src/app/api/documents/route.ts
+- [ ] T132 [P] [US6] Implement document list/get/delete API endpoints in starter-app/src/app/api/documents/[documentId]/route.ts
+- [ ] T133 [US6] Implement document chunking service in starter-app/src/lib/services/chunking-service.ts
+- [ ] T134 [US6] Implement embedding generation service in starter-app/src/lib/services/embedding-service.ts
+- [ ] T135 [US6] Implement vector similarity search in starter-app/src/lib/services/search-service.ts
+- [ ] T136 [P] [US6] Create chat session API endpoints in starter-app/src/app/api/chat/sessions/route.ts
+- [ ] T137 [P] [US6] Create chat message API endpoints with streaming in starter-app/src/app/api/chat/sessions/[sessionId]/messages/route.ts
+- [ ] T138 [US6] Implement RAG pipeline (retrieve → augment → generate) in starter-app/src/lib/services/rag-service.ts
+- [ ] T139 [P] [US6] Create document upload page in starter-app/src/app/(dashboard)/documents/page.tsx
+- [ ] T140 [P] [US6] Create chat interface page in starter-app/src/app/(dashboard)/chat/page.tsx
+- [ ] T141 [P] [US6] Create document upload component with progress in starter-app/src/components/chat/document-upload.tsx
+- [ ] T142 [P] [US6] Create chat message list component in starter-app/src/components/chat/message-list.tsx
+- [ ] T143 [P] [US6] Create chat input component in starter-app/src/components/chat/chat-input.tsx
+- [ ] T144 [P] [US6] Create source citation components in starter-app/src/components/chat/source-citations.tsx
+- [ ] T145 [US6] Implement document processing background job in starter-app/src/lib/jobs/process-document.ts
+- [ ] T146 [US6] Create useChat hook for managing chat state in starter-app/src/hooks/use-chat.ts
+- [ ] T147 [US6] Create useDocuments hook for document management in starter-app/src/hooks/use-documents.ts
+- [ ] T148 [US6] Run all RAG tests and verify they PASS
 
 **Checkpoint**: RAG chatbot fully functional - users can upload documents and ask questions
 
@@ -228,27 +288,27 @@
 
 ### Constitution Compliance Tasks
 
-- [ ] T107 [P] Verify all components use token-backed utilities from mm-design-system (Principle I: Token-First)
-- [ ] T108 [P] Accessibility audit: keyboard navigation, ARIA labels, color contrast across all pages (Principle IV)
-- [ ] T109 [P] Responsive behavior validation at 320px, 768px, 1024px, 1440px breakpoints (Principle V)
-- [ ] T110 Run npm run lint across starter-app workspace
+- [ ] T149 [P] Verify all components use token-backed utilities from mm-design-system (Principle I: Token-First)
+- [ ] T150 [P] Accessibility audit: keyboard navigation, ARIA labels, color contrast across all pages (Principle IV)
+- [ ] T151 [P] Responsive behavior validation at 320px, 768px, 1024px, 1440px breakpoints (Principle V)
+- [ ] T152 Run npm run lint across starter-app workspace
 
 ### General Polish
 
-- [ ] T111 [P] Create comprehensive setup documentation in starter-app/README.md
-- [ ] T112 [P] Create troubleshooting guide in infra/docs/troubleshooting.md
-- [ ] T113 [P] Add loading states and skeletons to all async components
-- [ ] T114 [P] Implement toast notifications for user feedback in starter-app/src/components/ui/toast.tsx
-- [ ] T115 [P] Add error pages (404, 500) in starter-app/src/app/
-- [ ] T116 [P] Create favicon and metadata in starter-app/src/app/layout.tsx
-- [ ] T117 [P] Add analytics placeholder (privacy-friendly) in starter-app/src/lib/analytics.ts
-- [ ] T118 [P] Implement rate limiting for API endpoints in starter-app/src/middleware.ts
-- [ ] T119 [P] Add API request logging in starter-app/src/lib/logger.ts
-- [ ] T120 [P] Security hardening: CSRF protection, XSS prevention, SQL injection prevention
-- [ ] T121 Run quickstart.md validation by following all setup steps
-- [ ] T122 Performance optimization: bundle size analysis, lazy loading, image optimization
-- [ ] T123 [P] Create deployment guide for Vercel in infra/docs/deployment-guide.md
-- [ ] T124 Create CHANGELOG.md documenting template features
+- [ ] T153 [P] Create comprehensive setup documentation in starter-app/README.md
+- [ ] T154 [P] Create troubleshooting guide in infra/docs/troubleshooting.md
+- [ ] T155 [P] Add loading states and skeletons to all async components
+- [ ] T156 [P] Implement toast notifications for user feedback in starter-app/src/components/ui/toast.tsx
+- [ ] T157 [P] Add error pages (404, 500) in starter-app/src/app/
+- [ ] T158 [P] Create favicon and metadata in starter-app/src/app/layout.tsx
+- [ ] T159 [P] Add analytics placeholder (privacy-friendly) in starter-app/src/lib/analytics.ts
+- [ ] T160 [P] Implement rate limiting for API endpoints in starter-app/src/middleware.ts
+- [ ] T161 [P] Add API request logging in starter-app/src/lib/logger.ts
+- [ ] T162 [P] Security hardening: CSRF protection, XSS prevention, SQL injection prevention
+- [ ] T163 Run quickstart.md validation by following all setup steps
+- [ ] T164 Performance optimization: bundle size analysis, lazy loading, image optimization
+- [ ] T165 [P] Create deployment guide for Vercel in infra/docs/deployment-guide.md
+- [ ] T166 Create CHANGELOG.md documenting template features
 
 ---
 
@@ -352,20 +412,25 @@ With multiple developers:
 
 ## Task Summary
 
-**Total Tasks**: 124 tasks
+**Total Tasks**: 166 tasks (including test-first development)
 - Phase 1 (Setup): 9 tasks
-- Phase 2 (Foundational): 10 tasks (BLOCKS all user stories)
-- Phase 3 (US1 - Bootstrap): 9 tasks
-- Phase 4 (US2 - Authentication): 14 tasks
-- Phase 5 (US3 - Payments): 14 tasks
-- Phase 6 (US4 - Email): 17 tasks
-- Phase 7 (US5 - Theme/UI): 10 tasks
-- Phase 8 (RAG Chatbot): 23 tasks
+- Phase 2 (Foundational): 14 tasks (BLOCKS all user stories) - includes test framework setup
+- Phase 3 (US1 - Bootstrap): 16 tasks (6 tests + 9 implementation + 1 verification)
+- Phase 4 (US2 - Authentication): 22 tasks (7 tests + 14 implementation + 1 verification)
+- Phase 5 (US3 - Payments): 20 tasks (5 tests + 14 implementation + 1 verification)
+- Phase 6 (US4 - Email): 22 tasks (4 tests + 17 implementation + 1 verification)
+- Phase 7 (US5 - Theme/UI): 15 tasks (4 tests + 10 implementation + 1 verification)
+- Phase 8 (RAG Chatbot): 30 tasks (6 tests + 23 implementation + 1 verification)
 - Phase 9 (Polish): 18 tasks
 
-**Parallel Opportunities**: 68 tasks marked [P] can run in parallel within their phases
+**Test-First Approach**: Following MM Design System Constitution Principle III
+- 32 test tasks across all user stories
+- Tests written FIRST, verified to fail, then implementation, then verified to pass
+- Test frameworks: Jest + React Testing Library + Chrome DevTools Protocol + MSW
 
-**MVP Scope**: Phases 1-3 (28 tasks) deliver working template that developers can bootstrap
+**Parallel Opportunities**: 95+ tasks marked [P] can run in parallel within their phases
+
+**MVP Scope**: Phases 1-3 (39 tasks including tests) deliver working template that developers can bootstrap
 
 **Independent Test Criteria**:
 - US1: Clone → env vars → launch → verify landing page and health check
@@ -384,7 +449,9 @@ With multiple developers:
 - Each user story should be independently completable and testable
 - Commit after each task or logical group
 - Stop at any checkpoint to validate story independently
-- Tests are OPTIONAL and not included unless explicitly requested
+- **Test-First Development**: Tests written BEFORE implementation per Constitution Principle III
+- Test frameworks configured in Phase 2 (Foundational): Jest, React Testing Library, Chrome DevTools Protocol, MSW
+- Each user story follows pattern: Write tests → Verify fail → Implement → Verify pass
 - Focus on template infrastructure - avoid deep feature customization
 - Prioritize environment-variable-only configuration
 - Follow mm-design-system principles for all UI components

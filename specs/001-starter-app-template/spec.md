@@ -111,12 +111,11 @@ A developer can customize the look and feel of the application with pre-built th
 - **FR-009**: Template MUST include user settings/profile management interface
 - **FR-010**: System MUST provide webhook endpoints for payment and email events
 - **FR-011**: Template MUST include error handling and user-friendly error messages
-- **FR-012**: System MUST support Progressive Web App capabilities
-- **FR-013**: Template MUST include smooth animations and transitions
-- **FR-014**: System MUST provide clear documentation for each integration setup
-- **FR-015**: System MUST implement Q&A chatbot with knowledge base using RAG (Retrieval-Augmented Generation) for answering questions based on uploaded documents
-- **FR-016**: Marketing email platform MUST support multiple providers (ConvertKit, MailerLite, Brevo, Sender) through environment variable configuration
-- **FR-017**: Email provider selection MUST be configurable at deployment time without code changes
+- **FR-012**: Template MUST include smooth animations and transitions
+- **FR-013**: System MUST provide clear documentation for each integration setup
+- **FR-014**: System MUST implement Q&A chatbot with knowledge base using RAG (Retrieval-Augmented Generation) for answering questions based on uploaded documents
+- **FR-015**: Marketing email platform MUST support multiple providers (ConvertKit, MailerLite, Brevo, Sender) through environment variable configuration
+- **FR-016**: Email provider selection MUST be configurable at deployment time without code changes
 
 ### Key Entities
 
@@ -149,7 +148,6 @@ A developer can customize the look and feel of the application with pre-built th
 - Default to REST API patterns for service integrations
 - Error messages will be user-friendly with fallback to generic messages for security
 - Mobile-first responsive design approach
-- Standard PWA features (offline capability, install prompt, push notifications)
 - RAG Q&A chatbot will use vector embeddings with document upload, chunking, and retrieval
 - Marketing email providers (ConvertKit, MailerLite, Brevo, Sender) use lightweight adapter pattern
 - Email provider switching requires only environment variable changes, no code modifications
