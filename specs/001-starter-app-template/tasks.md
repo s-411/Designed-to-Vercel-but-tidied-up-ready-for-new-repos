@@ -253,20 +253,20 @@
 
 ### Implementation for RAG Feature
 
-- [ ] T125 [P] [US6] Create Document entity table with pgvector in infra/supabase/migrations/005_create_documents.sql
-- [ ] T126 [P] [US6] Create Document Chunk entity table with vector embeddings in infra/supabase/migrations/006_create_document_chunks.sql
-- [ ] T127 [P] [US6] Create Chat Session entity table in infra/supabase/migrations/007_create_chat_sessions.sql
-- [ ] T128 [P] [US6] Create Chat Message entity table in infra/supabase/migrations/008_create_chat_messages.sql
-- [ ] T129 [US6] Enable pgvector extension in Supabase in infra/supabase/enable-vector.sql
-- [ ] T130 [US6] Configure OpenAI client in starter-app/src/lib/openai.ts
+- [x] T125 [P] [US6] Create Document entity table with pgvector in infra/supabase/migrations/005_create_documents.sql
+- [x] T126 [P] [US6] Create Document Chunk entity table with vector embeddings in infra/supabase/migrations/006_create_document_chunks.sql
+- [x] T127 [P] [US6] Create Chat Session entity table in infra/supabase/migrations/007_create_chat_sessions.sql
+- [x] T128 [P] [US6] Create Chat Message entity table in infra/supabase/migrations/008_create_chat_messages.sql
+- [x] T129 [US6] Enable pgvector extension in Supabase in infra/supabase/enable-vector.sql
+- [x] T130 [US6] Configure OpenAI client in starter-app/src/lib/openai.ts
 - [ ] T131 [P] [US6] Implement document upload API endpoint in starter-app/src/app/api/documents/route.ts
 - [ ] T132 [P] [US6] Implement document list/get/delete API endpoints in starter-app/src/app/api/documents/[documentId]/route.ts
-- [ ] T133 [US6] Implement document chunking service in starter-app/src/lib/services/chunking-service.ts
-- [ ] T134 [US6] Implement embedding generation service in starter-app/src/lib/services/embedding-service.ts
-- [ ] T135 [US6] Implement vector similarity search in starter-app/src/lib/services/search-service.ts
+- [x] T133 [US6] Implement document chunking service in starter-app/src/lib/services/chunking-service.ts
+- [x] T134 [US6] Implement embedding generation service in starter-app/src/lib/services/embedding-service.ts
+- [x] T135 [US6] Implement vector similarity search in starter-app/src/lib/services/search-service.ts
 - [ ] T136 [P] [US6] Create chat session API endpoints in starter-app/src/app/api/chat/sessions/route.ts
 - [ ] T137 [P] [US6] Create chat message API endpoints with streaming in starter-app/src/app/api/chat/sessions/[sessionId]/messages/route.ts
-- [ ] T138 [US6] Implement RAG pipeline (retrieve → augment → generate) in starter-app/src/lib/services/rag-service.ts
+- [x] T138 [US6] Implement RAG pipeline (retrieve → augment → generate) in starter-app/src/lib/services/rag-service.ts
 - [ ] T139 [P] [US6] Create document upload page in starter-app/src/app/(dashboard)/documents/page.tsx
 - [ ] T140 [P] [US6] Create chat interface page in starter-app/src/app/(dashboard)/chat/page.tsx
 - [ ] T141 [P] [US6] Create document upload component with progress in starter-app/src/components/chat/document-upload.tsx
