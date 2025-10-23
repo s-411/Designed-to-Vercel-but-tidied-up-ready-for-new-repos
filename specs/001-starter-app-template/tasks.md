@@ -259,23 +259,23 @@
 - [x] T128 [P] [US6] Create Chat Message entity table in infra/supabase/migrations/008_create_chat_messages.sql
 - [x] T129 [US6] Enable pgvector extension in Supabase in infra/supabase/enable-vector.sql
 - [x] T130 [US6] Configure OpenAI client in starter-app/src/lib/openai.ts
-- [ ] T131 [P] [US6] Implement document upload API endpoint in starter-app/src/app/api/documents/route.ts
-- [ ] T132 [P] [US6] Implement document list/get/delete API endpoints in starter-app/src/app/api/documents/[documentId]/route.ts
+- [x] T131 [P] [US6] Implement document upload API endpoint in starter-app/src/app/api/documents/route.ts
+- [x] T132 [P] [US6] Implement document list/get/delete API endpoints in starter-app/src/app/api/documents/[documentId]/route.ts
 - [x] T133 [US6] Implement document chunking service in starter-app/src/lib/services/chunking-service.ts
 - [x] T134 [US6] Implement embedding generation service in starter-app/src/lib/services/embedding-service.ts
 - [x] T135 [US6] Implement vector similarity search in starter-app/src/lib/services/search-service.ts
-- [ ] T136 [P] [US6] Create chat session API endpoints in starter-app/src/app/api/chat/sessions/route.ts
-- [ ] T137 [P] [US6] Create chat message API endpoints with streaming in starter-app/src/app/api/chat/sessions/[sessionId]/messages/route.ts
+- [x] T136 [P] [US6] Create chat session API endpoints in starter-app/src/app/api/chat/sessions/route.ts
+- [x] T137 [P] [US6] Create chat message API endpoints with streaming in starter-app/src/app/api/chat/sessions/[sessionId]/messages/route.ts
 - [x] T138 [US6] Implement RAG pipeline (retrieve → augment → generate) in starter-app/src/lib/services/rag-service.ts
-- [ ] T139 [P] [US6] Create document upload page in starter-app/src/app/(dashboard)/documents/page.tsx
-- [ ] T140 [P] [US6] Create chat interface page in starter-app/src/app/(dashboard)/chat/page.tsx
-- [ ] T141 [P] [US6] Create document upload component with progress in starter-app/src/components/chat/document-upload.tsx
-- [ ] T142 [P] [US6] Create chat message list component in starter-app/src/components/chat/message-list.tsx
-- [ ] T143 [P] [US6] Create chat input component in starter-app/src/components/chat/chat-input.tsx
-- [ ] T144 [P] [US6] Create source citation components in starter-app/src/components/chat/source-citations.tsx
-- [ ] T145 [US6] Implement document processing background job in starter-app/src/lib/jobs/process-document.ts
-- [ ] T146 [US6] Create useChat hook for managing chat state in starter-app/src/hooks/use-chat.ts
-- [ ] T147 [US6] Create useDocuments hook for document management in starter-app/src/hooks/use-documents.ts
+- [x] T139 [P] [US6] Create document upload page in starter-app/src/app/(dashboard)/documents/page.tsx
+- [x] T140 [P] [US6] Create chat interface page in starter-app/src/app/(dashboard)/chat/page.tsx
+- [x] T141 [P] [US6] Create document upload component with progress in starter-app/src/components/chat/document-upload.tsx
+- [x] T142 [P] [US6] Create chat message list component in starter-app/src/components/chat/message-list.tsx
+- [x] T143 [P] [US6] Create chat input component in starter-app/src/components/chat/chat-input.tsx
+- [x] T144 [P] [US6] Create source citation components in starter-app/src/components/chat/source-citations.tsx
+- [x] T145 [US6] Implement document processing background job in starter-app/src/lib/jobs/process-document.ts
+- [x] T146 [US6] Create useChat hook for managing chat state in starter-app/src/hooks/use-chat.ts
+- [x] T147 [US6] Create useDocuments hook for document management in starter-app/src/hooks/use-documents.ts
 - [ ] T148 [US6] Run all RAG tests and verify they PASS
 
 **Checkpoint**: RAG chatbot fully functional - users can upload documents and ask questions
