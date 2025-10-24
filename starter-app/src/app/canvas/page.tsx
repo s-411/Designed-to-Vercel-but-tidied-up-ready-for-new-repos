@@ -117,6 +117,14 @@ export default function CanvasPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="space-y-12">
 
+          {/* ========== CANVAS SECTION ========== */}
+          <div id="canvas" className="scroll-mt-20">
+            <div className="mb-6">
+              <h2 className="text-3xl font-heading mb-2 text-primary">Canvas Layouts</h2>
+              <p className="text-muted-foreground">Original canvas section components</p>
+            </div>
+          </div>
+
           {/* Demo 1: hero-1 */}
           <div>
             <div className="mb-6">
@@ -396,7 +404,7 @@ Made, hall frequency, thoroughly, avoided fundamental; Movement twice with the a
           <div className="border-t border-border"></div>
 
           {/* ========== HEROES SECTION ========== */}
-          <div>
+          <div id="heroes" className="scroll-mt-20">
             <div className="mb-6">
               <h2 className="text-3xl font-heading mb-2 text-primary">Heroes</h2>
               <p className="text-muted-foreground">Full-width hero sections with various layouts</p>
@@ -473,7 +481,7 @@ Made, hall frequency, thoroughly, avoided fundamental; Movement twice with the a
           <div className="border-t border-border"></div>
 
           {/* ========== FEATURES SECTION ========== */}
-          <div>
+          <div id="features" className="scroll-mt-20">
             <div className="mb-6">
               <h2 className="text-3xl font-heading mb-2 text-primary">Features</h2>
               <p className="text-muted-foreground">Showcase your product features and benefits</p>
@@ -551,7 +559,7 @@ Made, hall frequency, thoroughly, avoided fundamental; Movement twice with the a
           <div className="border-t border-border"></div>
 
           {/* ========== CONTENT SECTION ========== */}
-          <div>
+          <div id="content" className="scroll-mt-20">
             <div className="mb-6">
               <h2 className="text-3xl font-heading mb-2 text-primary">Blog & Content</h2>
               <p className="text-muted-foreground">Display blog posts, portfolios, and team members</p>
@@ -611,7 +619,7 @@ Made, hall frequency, thoroughly, avoided fundamental; Movement twice with the a
           <div className="border-t border-border"></div>
 
           {/* ========== CTA SECTION ========== */}
-          <div>
+          <div id="cta" className="scroll-mt-20">
             <div className="mb-6">
               <h2 className="text-3xl font-heading mb-2 text-primary">Call to Action</h2>
               <p className="text-muted-foreground">Drive conversions with compelling CTAs</p>
@@ -669,7 +677,7 @@ Made, hall frequency, thoroughly, avoided fundamental; Movement twice with the a
           <div className="border-t border-border"></div>
 
           {/* ========== TESTIMONIALS SECTION ========== */}
-          <div>
+          <div id="testimonials" className="scroll-mt-20">
             <div className="mb-6">
               <h2 className="text-3xl font-heading mb-2 text-primary">Testimonials</h2>
               <p className="text-muted-foreground">Social proof from happy customers - TestimonialGrid, TestimonialCarousel, and TestimonialWall components are available at [starter-app/src/components/sections/engagement/](starter-app/src/components/sections/engagement/)</p>
@@ -680,7 +688,7 @@ Made, hall frequency, thoroughly, avoided fundamental; Movement twice with the a
           <div className="border-t border-border"></div>
 
           {/* ========== NEWSLETTER SECTION ========== */}
-          <div>
+          <div id="newsletter" className="scroll-mt-20">
             <div className="mb-6">
               <h2 className="text-3xl font-heading mb-2 text-primary">Newsletter</h2>
               <p className="text-muted-foreground">Capture email signups</p>
@@ -727,7 +735,7 @@ Made, hall frequency, thoroughly, avoided fundamental; Movement twice with the a
           <div className="border-t border-border"></div>
 
           {/* ========== FAQ SECTION ========== */}
-          <div>
+          <div id="faq" className="scroll-mt-20">
             <div className="mb-6">
               <h2 className="text-3xl font-heading mb-2 text-primary">FAQ</h2>
               <p className="text-muted-foreground">Answer common questions</p>
@@ -752,7 +760,7 @@ Made, hall frequency, thoroughly, avoided fundamental; Movement twice with the a
           <div className="border-t border-border"></div>
 
           {/* ========== CONTACT SECTION ========== */}
-          <div>
+          <div id="contact" className="scroll-mt-20">
             <div className="mb-6">
               <h2 className="text-3xl font-heading mb-2 text-primary">Contact</h2>
               <p className="text-muted-foreground">Let users reach out</p>
@@ -778,7 +786,7 @@ Made, hall frequency, thoroughly, avoided fundamental; Movement twice with the a
           <div className="border-t border-border"></div>
 
           {/* ========== PRICING SECTION ========== */}
-          <div>
+          <div id="pricing" className="scroll-mt-20">
             <div className="mb-6">
               <h2 className="text-3xl font-heading mb-2 text-primary">Pricing</h2>
               <p className="text-muted-foreground">Show your pricing plans</p>
